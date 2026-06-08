@@ -24,6 +24,10 @@ public abstract class Customer {
     public void setNumberOfContracts(int numberOfContracts) {
         this.numberOfContracts = numberOfContracts;
     }
+
+public void incrementContracts() {
+    this.numberOfContracts++;
+}
     
     public abstract void printInfo();
 
