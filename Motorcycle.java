@@ -4,10 +4,14 @@ class Motorcycle extends Vehicle {
     private double engineCapacity;
     private boolean hasSideCar;
 
-    Motorcycle(String plateNumber, String Brand, String Model, double dailyPrice, boolean Available,
-            double engineCapacity,
-            boolean hasSideCar) {
-        super(plateNumber, Brand, Model, dailyPrice, Available);
+    Motorcycle(String plateNumber, 
+               String Brand, String Model, 
+               double dailyPrice, 
+               boolean Available,
+               double engineCapacity,
+               boolean hasSideCar) {
+        super(plateNumber, Brand, Model, 
+              dailyPrice, Available);
         this.engineCapacity = engineCapacity;
         this.hasSideCar = hasSideCar;
     }
@@ -30,10 +34,19 @@ class Motorcycle extends Vehicle {
 
     @Override
     public void printInfo() {
-        System.out.println("Vehicle Type : Motorcycle");
-        System.out.println("Plate Number:" + plateNumber + "  |  Brand:" + Brand + "  |  Model:" + Model);
-        System.out.println("Daily Price:" + dailyPrice + "  |  Available:" + (Available ? "Yes" : "No"));
-        System.out.println("Engine Capacity:" + engineCapacity + "CC  |  Sidecar:" + (hasSideCar ? "Yes" : "No"));
+        System.out.println(
+            "Vehicle Type : Motorcycle");
+        System.out.println(
+            "Plate Number:" + plateNumber
+          + ", Brand: " + Brand 
+          + ", Model: " + Model);
+        System.out.println(
+            "Daily Price: " + dailyPrice
+          + ", Available: " + (Available ? "Yes" : "No"));
+        System.out.println(
+            "Engine Capacity: " + engineCapacity
+            + " CC" 
+            + "Sidecar: " + (hasSideCar ? "Yes" : "No"));
     }
 
     @Override
