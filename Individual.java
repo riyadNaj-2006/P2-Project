@@ -1,13 +1,15 @@
-package programming2project;
-
 import java.time.LocalDate;
 
 public class Individual extends Customer {
     private String licenseNumber;
     private LocalDate birthDate;
 
-    Individual(String ID, String Name, String Address, String phoneNumber, int numberOfContracts, String licenseNumber,
-     LocalDate birthDate) {
+    Individual(String ID, String Name, 
+               String Address, 
+               String phoneNumber, 
+               int numberOfContracts, 
+               String licenseNumber,
+               LocalDate birthDate) {
         super(ID, Name, Address, phoneNumber, numberOfContracts);
         this.licenseNumber = licenseNumber;
         this.birthDate = birthDate;
@@ -44,8 +46,13 @@ public class Individual extends Customer {
     public void printInfo() {
         System.out.println("Individual Customer Info");
         System.out.println(
-                "ID:" + ID + "  |  Name:" + Name + "  |  Address:" + Address + "  |  Phone Number:" + phoneNumber);
-        System.out.println("Driving License Number:" + licenseNumber + "  |  Birthdate:" + birthDate);
+          "ID:" + ID 
+        + ",  Name:" + Name
+        + ",  Address:" + Address
+        + ",  Phone Number:" + phoneNumber);
+        System.out.println(
+          "Driving License Number:" + licenseNumber
+        + ",  Birthdate:" + birthDate);
     }
 
 }
