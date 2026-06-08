@@ -6,14 +6,13 @@ public class Car extends Vehicle {
     Car(String plateNumber,
         String brand, 
         String model, 
-        double dailyPrice, 
-        boolean available,
+        double dailyPrice,
         String fuelType,
         int numberOfSeats,
         boolean airConditioner) {
         super(plateNumber, 
               brand, model, 
-              dailyPrice, available);
+              dailyPrice, true);
         this.fuelType = fuelType;
         this.numberOfSeats = numberOfSeats;
         this.airConditioner = airConditioner;
