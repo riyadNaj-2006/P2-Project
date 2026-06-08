@@ -1,14 +1,21 @@
-package programming2project;
+
 
 public class Car extends Vehicle {
     private String fuelType;
     private boolean airConditioner;
     private int numberOfSeats;
 
-    Car(String PlateNumber, String Brand, String Model, double DailyPrice, boolean Available,
-            String fuelType,
-            int numberOfSeats, boolean airConditioner) {
-        super(PlateNumber, Brand, Model, DailyPrice, Available);
+    Car(String PlateNumber,
+        String Brand, 
+        String Model, 
+        double DailyPrice, 
+        boolean Available,
+        String fuelType,
+        int numberOfSeats,
+        boolean airConditioner) {
+        super(PlateNumber, 
+              Brand, Model, 
+              DailyPrice, Available);
         this.fuelType = fuelType;
         this.numberOfSeats = numberOfSeats;
         this.airConditioner = airConditioner;
@@ -20,7 +27,7 @@ public class Car extends Vehicle {
     }
 
     public void setfuelType(String fuelType) {
-        fuelType = fuelType;
+        this.fuelType = fuelType;
     }
 
     public boolean getairConditioner() {
@@ -28,7 +35,7 @@ public class Car extends Vehicle {
     }
 
     public void setairConditioner(boolean airConditioner) {
-        airConditioner = airConditioner;
+        this.airConditioner = airConditioner;
     }
 
     public int getNumberOfSeats() {
@@ -36,7 +43,7 @@ public class Car extends Vehicle {
     }
 
     public void setNumberOfSeats(int numberOfSeats) {
-        numberOfSeats = numberOfSeats;
+        this.numberOfSeats = numberOfSeats;
     }
 
     @Override
