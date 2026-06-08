@@ -3,12 +3,12 @@ public class Company extends Customer {
     private double discountRate;
 
     Company(String ID, 
-            String Name, String Address, 
+            String name, String address, 
             String phoneNumber, 
             int numberOfContracts, 
             double discountRate,
             String commercialRecord) {
-        super(ID, Name, Address, 
+        super(ID, name, address, 
                phoneNumber, 
                numberOfContracts);
         this.discountRate = discountRate;
@@ -37,8 +37,8 @@ public class Company extends Customer {
         System.out.println("Company Customer Info");
         System.out.println(
           "ID:" + ID 
-        + ", Name:" + Name
-        + ", Address:" + Address
+        + ", Name:" + name
+        + ", Address:" + address
         + ", Phone Number:" + phoneNumber);
         System.out.println(
           "commercialRecord:" + commercialRecord
