@@ -4,10 +4,10 @@ class Truck extends Vehicle {
 
     Truck(String plateNumber, String brand, 
           String model, double dailyPrice, 
-          boolean available, double loadCapacity,
+          double loadCapacity,
           boolean refrigerated) {
         super(plateNumber, brand, model, 
-              dailyPrice, available);
+              dailyPrice, true);
         this.loadCapacity = loadCapacity;
         this.refrigerated = refrigerated;
     }
