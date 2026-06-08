@@ -1,12 +1,13 @@
-package programming2project;
-
 class Truck extends Vehicle {
     private double loadCapacity;
     private boolean refrigerated;
 
-    Truck(String PlateNumber, String Brand, String Model, double DailyPrice, boolean Available, double loadCapacity,
-            boolean refrigerated) {
-        super(PlateNumber, Brand, Model, DailyPrice, Available);
+    Truck(String plateNumber, String brand, 
+          String model, double dailyPrice, 
+          boolean available, double loadCapacity,
+          boolean refrigerated) {
+        super(plateNumber, brand, model, 
+              dailyPrice, available);
         this.loadCapacity = loadCapacity;
         this.refrigerated = refrigerated;
     }
@@ -16,7 +17,7 @@ class Truck extends Vehicle {
     }
 
     public void setloadCapacity(float loadCapacity) {
-        loadCapacity = loadCapacity;
+        this.loadCapacity = loadCapacity;
     }
 
     public boolean getrefrigerated() {
@@ -24,15 +25,23 @@ class Truck extends Vehicle {
     }
 
     public void setrefrigerated(boolean refrigerated) {
-        refrigerated = refrigerated;
+        this.refrigerated = refrigerated;
     }
 
     @Override
     public void printInfo() {
-        System.out.println("Vehicle Type : Truck");
-        System.out.println("Plate Number:" + plateNumber + "  |  Brand:" + Brand + "  |  Model:" + Model);
-        System.out.println("Daily Price:" + dailyPrice + "  |  Available:" + (Available ? "Yes" : "No"));
-        System.out.println("Load Capacity:" + loadCapacity + "KG  |  Refrigirated:" + (refrigerated ? "Yes" : "No"));
+     System.out.println("Vehicle Type : Truck");
+     System.out.println(
+         "Plate Number:" + plateNumber
+       + ", Brand:" + Brand 
+       + ", Model:" + Model);
+     System.out.println(
+         "Daily Price:" + dailyPrice
+       + ", Available:" + (Available ? "Yes" : "No"));
+     System.out.println(
+         "Load Capacity:" + loadCapacity
+       + "KG" 
+       + ", Refrigirated:" + (refrigerated ? "Yes" : "No"));
     }
 
     @Override
