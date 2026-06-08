@@ -4,13 +4,13 @@ public class Individual extends Customer {
     private String licenseNumber;
     private LocalDate birthDate;
 
-    Individual(String ID, String Name, 
-               String Address, 
+    Individual(String ID, String name, 
+               String address, 
                String phoneNumber, 
                int numberOfContracts, 
                String licenseNumber,
                LocalDate birthDate) {
-        super(ID, Name, Address, phoneNumber, numberOfContracts);
+        super(ID, name, address, phoneNumber, numberOfContracts);
         this.licenseNumber = licenseNumber;
         this.birthDate = birthDate;
 
@@ -47,8 +47,8 @@ public class Individual extends Customer {
         System.out.println("Individual Customer Info");
         System.out.println(
           "ID:" + ID 
-        + ",  Name:" + Name
-        + ",  Address:" + Address
+        + ",  Name:" + name
+        + ",  Address:" + address
         + ",  Phone Number:" + phoneNumber);
         System.out.println(
           "Driving License Number:" + licenseNumber
