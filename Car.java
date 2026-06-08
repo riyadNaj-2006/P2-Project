@@ -46,13 +46,22 @@ public class Car extends Vehicle {
         this.numberOfSeats = numberOfSeats;
     }
 
+
+
     @Override
     public void printInfo() {
-        System.out.println("Vehicle Type : Car");
-        System.out.println("Plate Number:" + plateNumber + "  |  Brand:" + Brand + "  |  Model:" + Model);
-        System.out.println("Daily Price:" + dailyPrice + "  |  Available:" + (Available ? "Yes" : "No"));
-        System.out.println("Fuel Type:" + fuelType + "  |  Number of Seats:" + numberOfSeats + "  |  Air Condition"
-                + (airConditioner ? "Yes" : "No"));
+        System.out.println("Vehicle Type: Car");
+        System.out.println(
+            "Plate Number: " + plateNumber +
+            " | Brand: " + Brand +
+            " | Model: " + Model);
+        System.out.println(
+            "Daily Price: " + dailyPrice +
+            " | Available: " + (Available ? "Yes" : "No"));
+        System.out.println(
+           "Fuel Type: " + fuelType +
+           " | Number of Seats: " + numberOfSeats +
+           " | Air Condition: " + (airConditioner ? "Yes" : "No"));
     }
 
     @Override
