@@ -37,12 +37,12 @@ public class Company extends Customer {
         System.out.println("Company Customer Info");
         System.out.println(
           "ID:" + ID 
-        + "  |  Name:" + Name
-        + "  |  Address:" + Address
-        + "  |  Phone Number:" + phoneNumber);
+        + ", Name:" + Name
+        + ", Address:" + Address
+        + ", Phone Number:" + phoneNumber);
         System.out.println(
           "commercialRecord:" + commercialRecord
-        + "  |  Discount Rate:" + discountRate);
+        + ", Discount Rate:" + discountRate);
     }
 
     @Override
