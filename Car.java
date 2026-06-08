@@ -19,19 +19,19 @@ public class Car extends Vehicle {
 
     }
 
-    public String getfuelType() {
+    public String getFuelType() {
         return fuelType;
     }
 
-    public void setfuelType(String fuelType) {
+    public void setFuelType(String fuelType) {
         this.fuelType = fuelType;
     }
 
-    public boolean getairConditioner() {
+    public boolean getAirConditioner() {
         return airConditioner;
     }
 
-    public void setairConditioner(boolean airConditioner) {
+    public void setAirConditioner(boolean airConditioner) {
         this.airConditioner = airConditioner;
     }
 
