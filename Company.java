@@ -4,13 +4,12 @@ public class Company extends Customer {
 
     Company(String ID, 
             String name, String address, 
-            String phoneNumber, 
-            int numberOfContracts, 
+            String phoneNumber,
             double discountRate,
             String commercialRecord) {
         super(ID, name, address, 
                phoneNumber, 
-               numberOfContracts);
+               0);
         this.discountRate = discountRate;
         this.commercialRecord = commercialRecord;
     }
