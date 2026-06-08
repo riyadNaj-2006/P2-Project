@@ -16,7 +16,7 @@ class Truck extends Vehicle {
         return loadCapacity;
     }
 
-    public void setloadCapacity(float loadCapacity) {
+    public void setloadCapacity(double loadCapacity) {
         this.loadCapacity = loadCapacity;
     }
 
