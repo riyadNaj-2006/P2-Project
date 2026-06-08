@@ -12,19 +12,19 @@ class Truck extends Vehicle {
         this.refrigerated = refrigerated;
     }
 
-    public double getloadCapacity() {
+    public double getLoadCapacity() {
         return loadCapacity;
     }
 
-    public void setloadCapacity(double loadCapacity) {
+    public void setLoadCapacity(double loadCapacity) {
         this.loadCapacity = loadCapacity;
     }
 
-    public boolean getrefrigerated() {
+    public boolean getRefrigerated() {
         return refrigerated;
     }
 
-    public void setrefrigerated(boolean refrigerated) {
+    public void setRefrigerated(boolean refrigerated) {
         this.refrigerated = refrigerated;
     }
 
