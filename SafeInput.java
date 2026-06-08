@@ -238,7 +238,7 @@ public static LocalDate readDate(String prompt) {
             }
         }
 
-        // Validate actual calendar date
+        // Validate actual calendar date (ex: there is no 31/2 date!)
         try {
             return LocalDate.of(year, month, day);
         } catch (DateTimeException e) {
