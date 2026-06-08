@@ -13,19 +13,19 @@ class Motorcycle extends Vehicle {
         this.hasSideCar = hasSideCar;
     }
 
-    public double getengineCapacity() {
+    public double getEngineCapacity() {
         return engineCapacity;
     }
 
-    public void setengineCapacity(float engineCapacity) {
+    public void setEngineCapacity(float engineCapacity) {
         this.engineCapacity = engineCapacity;
     }
 
-    public boolean gethasSideCar() {
+    public boolean getHasSideCar() {
         return hasSideCar;
     }
 
-    public void sethasSideCar(boolean hasSideCar) {
+    public void setHasSideCar(boolean hasSideCar) {
         this.hasSideCar = hasSideCar;
     }
 
