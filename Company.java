@@ -1,12 +1,16 @@
-package programming2project;
-
 public class Company extends Customer {
     private String commercialRecord;
     private double discountRate;
 
-    Company(String ID, String Name, String Address, String phoneNumber, int numberOfContracts, double discountRate,
+    Company(String ID, 
+            String Name, String Address, 
+            String phoneNumber, 
+            int numberOfContracts, 
+            double discountRate,
             String commercialRecord) {
-        super(ID, Name, Address, phoneNumber, numberOfContracts);
+        super(ID, Name, Address, 
+               phoneNumber, 
+               numberOfContracts);
         this.discountRate = discountRate;
         this.commercialRecord = commercialRecord;
     }
@@ -32,8 +36,13 @@ public class Company extends Customer {
     public void printInfo() {
         System.out.println("Company Customer Info");
         System.out.println(
-                "ID:" + ID + "  |  Name:" + Name + "  |  Address:" + Address + "  |  Phone Number:" + phoneNumber);
-        System.out.println("commercialRecord:" + commercialRecord + "  |  Discount Rate:" + discountRate);
+          "ID:" + ID 
+        + "  |  Name:" + Name
+        + "  |  Address:" + Address
+        + "  |  Phone Number:" + phoneNumber);
+        System.out.println(
+          "commercialRecord:" + commercialRecord
+        + "  |  Discount Rate:" + discountRate);
     }
 
     @Override
