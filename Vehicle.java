@@ -1,5 +1,3 @@
-package programming2project;
-
 public abstract class Vehicle {
 
     protected String plateNumber;
