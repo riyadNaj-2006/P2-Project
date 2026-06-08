@@ -5,11 +5,10 @@ class Motorcycle extends Vehicle {
     Motorcycle(String plateNumber, 
                String brand, String model, 
                double dailyPrice, 
-               boolean available,
                double engineCapacity,
                boolean hasSideCar) {
         super(plateNumber, brand, model, 
-              dailyPrice, available);
+              dailyPrice, true);
         this.engineCapacity = engineCapacity;
         this.hasSideCar = hasSideCar;
     }
