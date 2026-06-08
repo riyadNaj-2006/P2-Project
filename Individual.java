@@ -6,11 +6,10 @@ public class Individual extends Customer {
 
     Individual(String ID, String name, 
                String address, 
-               String phoneNumber, 
-               int numberOfContracts, 
+               String phoneNumber,
                String licenseNumber,
                LocalDate birthDate) {
-        super(ID, name, address, phoneNumber, numberOfContracts);
+        super(ID, name, address, phoneNumber, 0);
         this.licenseNumber = licenseNumber;
         this.birthDate = birthDate;
 
