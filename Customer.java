@@ -1,5 +1,3 @@
-package programming2project;
-
 public abstract class Customer {
     protected String ID;
     protected String Name;
@@ -8,7 +6,10 @@ public abstract class Customer {
 
     private int numberOfContracts;
 
-    Customer(String ID, String Name, String Address, String phoneNumber, int numberOfContracts) {
+    Customer(String ID, String Name, 
+             String Address, 
+             String phoneNumber,
+             int numberOfContracts) {
         this.ID = ID;
         this.Name = Name;
         this.Address = Address;
