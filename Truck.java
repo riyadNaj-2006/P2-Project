@@ -41,7 +41,7 @@ class Truck extends Vehicle {
      System.out.println(
          "Load Capacity:" + loadCapacity
        + "KG" 
-       + ", Refrigirated:" + (refrigerated ? "Yes" : "No"));
+       + ", Refrigerated:" + (refrigerated ? "Yes" : "No"));
     }
 
     @Override
