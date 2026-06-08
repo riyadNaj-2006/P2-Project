@@ -1,5 +1,3 @@
-package programming2project;
-
 class Motorcycle extends Vehicle {
     private double engineCapacity;
     private boolean hasSideCar;
