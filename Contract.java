@@ -43,37 +43,37 @@ public class Contract {
     public void printEndedContractsInfo() {
       System.out.println(
           "ID:" + ID
-        + "  |  Start Date:" + startDate
-        + "  |  Should-End Return Date:"
+        + ", Start Date:" + startDate
+        + ", Should-End Return Date:"
         + shouldReturnDate 
-        + "  |  Actual Return Date:" 
+        + ", Actual Return Date:" 
         + actualReturnDate);
       System.out.println(
           "Number of Rentdays:" + numOfRentDays 
-        + "  |  Number of Late Days:" 
+        + ", Number of Late Days:" 
         + numOfLateDays);
         System.out.println(
           "Base Price:" + basePrice
-        + "  |  Fines:" + fines
-        + "  |  Final Cost:" + finalCost());
+        + ", Fines:" + fines
+        + ", Final Cost:" + finalCost());
     }
 
     public void printRunningContractsInfo() {
      System.out.println(
         "ID:" + ID
-      + "  |  Start Date:" + startDate
-      + "  |  Should-End Return Date:"
+      + ", Start Date:" + startDate
+      + ", Should-End Return Date:"
       + shouldReturnDate
-      + "  |  Actual Return Date:-------");
+      + ", Actual Return Date:-------");
 
      System.out.println(
         "Number of Rentdays:" + numOfRentDays
-      + "  |  Number of Late Days:-------");
+      + ", Number of Late Days:-------");
         
      System.out.println(
         "Base Price:" + basePrice 
-      + "  |  Fines:-------"
-      + "  |  Final Cost:-------");
+      + ", Fines:-------"
+      + ", Final Cost:-------");
     }
 
     void displayContractInfo() {
