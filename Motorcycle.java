@@ -5,13 +5,13 @@ class Motorcycle extends Vehicle {
     private boolean hasSideCar;
 
     Motorcycle(String plateNumber, 
-               String Brand, String Model, 
+               String brand, String model, 
                double dailyPrice, 
-               boolean Available,
+               boolean available,
                double engineCapacity,
                boolean hasSideCar) {
-        super(plateNumber, Brand, Model, 
-              dailyPrice, Available);
+        super(plateNumber, brand, model, 
+              dailyPrice, available);
         this.engineCapacity = engineCapacity;
         this.hasSideCar = hasSideCar;
     }
@@ -38,11 +38,11 @@ class Motorcycle extends Vehicle {
             "Vehicle Type : Motorcycle");
         System.out.println(
             "Plate Number:" + plateNumber
-          + ", Brand: " + Brand 
-          + ", Model: " + Model);
+          + ", brand: " + brand 
+          + ", model: " + model);
         System.out.println(
             "Daily Price: " + dailyPrice
-          + ", Available: " + (Available ? "Yes" : "No"));
+          + ", available: " + (available ? "Yes" : "No"));
         System.out.println(
             "Engine Capacity: " + engineCapacity
             + " CC" 
