@@ -51,11 +51,11 @@ public class Car extends Vehicle {
         System.out.println("Vehicle Type: Car");
         System.out.println(
             "Plate Number: " + plateNumber +
-            ", Brand: " + Brand +
-            ", Model: " + Model);
+            ", Brand: " + brand +
+            ", Model: " + model);
         System.out.println(
             "Daily Price: " + dailyPrice +
-            ", Available: " + (Available ? "Yes" : "No"));
+            ", Available: " + (available ? "Yes" : "No"));
         System.out.println(
            "Fuel Type: " + fuelType +
            ", Number of Seats: " + numberOfSeats +
