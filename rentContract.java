@@ -14,9 +14,13 @@ public class Contract {
     double fines;       
     double finalCost;   
 
-    // Constructor: Called when creating a new active contract
-    public Contract(String ID, Vehicle vehicle, Customer customer, 
-                    LocalDate startDate, int numOfRentDays, double basePrice) {
+    // (The Genesis)
+    public Contract(String ID, 
+                    Vehicle vehicle, 
+                    Customer customer, 
+                   LocalDate startDate, 
+                    int numOfRentDays,
+                    double basePrice) {
         this.ID = ID;
         this.vehicle = vehicle;
         this.customer = customer;
@@ -34,7 +38,7 @@ public class Contract {
         this.finalCost = 0.0;
     }
 
-    // Method: Terminate the contract and calculate final financial data
+    // The Termination
     public void endContract(LocalDate returnDate) {
         // 1. Record the actual return date
         this.actualReturnDate = returnDate;
@@ -57,43 +61,56 @@ public class Contract {
         System.out.println("The contract has been terminated successfully.");
     }
 
-    // Method: Print information for an ended contract
-    public void printEndedContractsInfo() {
-        System.out.println("ID: " + ID 
-                + ", Start Date: " + startDate 
-                + ", Should-End Return Date: " + shouldReturnDate 
-                + ", Actual Return Date: " + actualReturnDate);
+    // Print information for an (Ended Contract)
+  public void printEndedContractsInfo() {
+
+    System.out.println(
+        "ID: " + ID 
+      + ", Start Date: " + startDate 
+ + ", Should-End Return Date: " + shouldReturnDate
+ + ", Actual Return Date: " + actualReturnDate);
         
-        System.out.println("Number of Rent Days: " + numOfRentDays 
-                + ", Number of Late Days: " + numOfLateDays);
+    System.out.println(
+       "Number of Rent Days: " + numOfRentDays 
+     + ", Number of Late Days: " + numOfLateDays);
         
-        System.out.println("Base Price: " + basePrice 
+        System.out.println(
+                  "Base Price: " + basePrice 
                 + ", Fines: " + fines 
                 + ", Final Cost: " + finalCost);
     }
 
-    // Method: Print information for a running/active contract
+    // Print information for a (running/active contract)
     public void printRunningContractsInfo() {
-        System.out.println("ID: " + ID 
-                + ", Start Date: " + startDate 
-                + ", Should-End Return Date: " + shouldReturnDate 
-                + ", Actual Return Date: -------");
         
-        System.out.println("Number of Rent Days: " + numOfRentDays 
-                + ", Number of Late Days: -------");
+      System.out.println(
+          "ID: " + ID 
+        + ", Start Date: " + startDate 
++ ", Should-End Return Date: " + shouldReturnDate 
++ ", Actual Return Date: -------");
         
-        System.out.println("Base Price: " + basePrice 
+      System.out.println(
+         "Number of Rent Days: " + numOfRentDays 
+       + ", Number of Late Days: -------");
+        
+      System.out.println(
+        "Base Price: " + basePrice 
                 + ", Fines: -------" 
                 + ", Final Cost: -------");
     }
 
-    // Method: Display basic contract layout info
+    // Display basic contract info
     public void displayContractInfo() {
-        System.out.println("Contract ID: " + ID);
-        System.out.println("Vehicle Plate Number: " + (vehicle != null ? vehicle.plateNumber : "N/A"));
+      System.out.println("Contract ID: " + ID);
+
+     System.out.println("Vehicle Plate Number: " + (vehicle != null ? vehicle.plateNumber : "N/A"));
+
         System.out.println("Customer ID: " + (customer != null ? customer.ID : "N/A"));
+
         System.out.println("Starting Date: " + startDate);
+
         System.out.println("Number of Rent Days: " + numOfRentDays);
+
         System.out.println("Base Price: " + basePrice);
     }
 }
