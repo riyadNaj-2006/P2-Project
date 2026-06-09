@@ -29,12 +29,24 @@ public class Contract {
         this.actualReturnDate = actualReturnDate;
         this.numOfLateDays = numOfLateDays;
     }
+    
+  // Vehicle discount calculation 
+  private final double startPrice = 
+     (basePrice + vehicle.extraCost());
 
-    private final double startPrice = (basePrice + vehicle.extraCost());
-    private final double startPriceWithDiscount = startPrice * (1 - customer.getDiscountRate());
-    private final int LateDays = actualReturnDate.getDayOfYear() - shouldReturnDate.getDayOfYear();
-    double fines = LateDays * startPriceWithDiscount * 0.1;
-    private final double finalCost = startPriceWithDiscount + fines;
+  // Customer discount calculation 
+  private final double startPriceWithDiscount =
+     startPrice * (1 - customer.getDiscountRate());
+
+  // Calculating days of delay
+  private final int LateDays = 
+actualReturnDate.getDayOfYear() - shouldReturnDate.getDayOfYear();
+
+   // Calculating late fines
+   double fines = LateDays * startPriceWithDiscount * 0.1;
+
+   // Final price calculation 
+   private final double finalCost = startPriceWithDiscount + fines;
 
     public double finalCost() {
         return finalCost;
