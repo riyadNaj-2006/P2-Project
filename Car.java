@@ -68,7 +68,7 @@ public class Car extends Vehicle {
 
     @Override
     public double extraCost() {
-        if (fuelType.equalsIgnoreCase("electric")) {
+        if (fuelType.equalsIgnoreCase("Electric")) { 
             return 0.05;
         } else {
             return 0;
