@@ -61,56 +61,54 @@ public class Contract {
         System.out.println("The contract has been terminated successfully.");
     }
 
-    // Print information for an (Ended Contract)
-  public void printEndedContractsInfo() {
-
-    System.out.println(
-        "ID: " + ID 
-      + ", Start Date: " + startDate 
- + ", Should-End Return Date: " + shouldReturnDate
- + ", Actual Return Date: " + actualReturnDate);
-        
-    System.out.println(
-       "Number of Rent Days: " + numOfRentDays 
-     + ", Number of Late Days: " + numOfLateDays);
-        
+    public void printEndedContractsInfo() {
+      System.out.println(
+          "ID:" + ID
+        + ", Start Date:" + startDate
+        + ", Should-End Return Date:"
+        + shouldReturnDate 
+        + ", Actual Return Date:" 
+        + actualReturnDate);
+      System.out.println(
+          "Number of Rentdays:" + numOfRentDays 
+        + ", Number of Late Days:" 
+        + numOfLateDays);
         System.out.println(
-                  "Base Price: " + basePrice 
-                + ", Fines: " + fines 
-                + ", Final Cost: " + finalCost);
+          "Base Price:" + basePrice
+        + ", Fines:" + fines
+        + ", Final Cost:" + finalCost());
     }
 
-    // Print information for a (running/active contract)
     public void printRunningContractsInfo() {
+     System.out.println(
+        "ID:" + ID
+      + ", Start Date:" + startDate
+      + ", Should-End Return Date:"
+      + shouldReturnDate
+      + ", Actual Return Date:-------");
+
+     System.out.println(
+        "Number of Rentdays:" + numOfRentDays
+      + ", Number of Late Days:-------");
         
-      System.out.println(
-          "ID: " + ID 
-        + ", Start Date: " + startDate 
-+ ", Should-End Return Date: " + shouldReturnDate 
-+ ", Actual Return Date: -------");
-        
-      System.out.println(
-         "Number of Rent Days: " + numOfRentDays 
-       + ", Number of Late Days: -------");
-        
-      System.out.println(
-        "Base Price: " + basePrice 
-                + ", Fines: -------" 
-                + ", Final Cost: -------");
+     System.out.println(
+        "Base Price:" + basePrice 
+      + ", Fines:-------"
+      + ", Final Cost:-------");
     }
 
-    // Display basic contract info
-    public void displayContractInfo() {
-      System.out.println("Contract ID: " + ID);
+    void displayContractInfo() {
 
-     System.out.println("Vehicle Plate Number: " + (vehicle != null ? vehicle.plateNumber : "N/A"));
-
-        System.out.println("Customer ID: " + (customer != null ? customer.ID : "N/A"));
-
-        System.out.println("Starting Date: " + startDate);
-
-        System.out.println("Number of Rent Days: " + numOfRentDays);
-
-        System.out.println("Base Price: " + basePrice);
+        System.out.println("Contract ID: " + ID);
+        System.out.println("Vehicle plateNumber:" 
+                           + vehicle.plateNumber);
+        System.out.println("Customer ID: " 
+                           + customer.ID);
+        System.out.println("Starting Date: " 
+                           + startDate);
+        System.out.println("Number of Rent Days: " 
+                           + numOfRentDays);
+        System.out.println("Base Price : " 
+                           + basePrice);
     }
 }
