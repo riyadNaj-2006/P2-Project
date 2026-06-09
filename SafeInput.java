@@ -199,16 +199,23 @@ public static LocalDate readDate(String prompt) {
 
         // YEAR
         System.out.println("Please enter a valid year between 1900 and 2008.");
-        int year;
-        while (true) {
-            year = readInt("Enter year: ");
-            if (year >= 1900 && year <= 2008) {
-                break;
-            } else {
-                System.out.println(
- "Error: Year must be between 1900 and 2008.");
-            }
-        }
+
+int year;
+
+while (true) {
+
+    year = readInt("Enter year: ");
+
+    if (year >= 1900 && year <= 2008) {
+        break;
+    }
+
+    if (year > 2008) {
+        System.out.println("User must be at least 18 years old.");
+    } else {
+        System.out.println("Invalid year.");
+    }
+}
 
         // MONTH
         System.out.println(
