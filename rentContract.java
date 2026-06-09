@@ -57,7 +57,7 @@ public class rentContract {
         }
 
         // 3. Perform financial calculations and lock the final values
-        double startPrice = this.basePrice + vehicle.extraCost();
+        double startPrice = this.basePrice * (1 + vehicle.extraCost());
         double startPriceWithDiscount = startPrice * (1 - customer.getDiscountRate());
         
         this.fines = this.numOfLateDays * startPriceWithDiscount * 0.1;
