@@ -1,4 +1,7 @@
-public class Contract {
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit; // Just to calculate the time between days
+
+public class rentContract {
     // Basic attributes
     String ID;
     Vehicle vehicle;
@@ -36,6 +39,9 @@ public class Contract {
         this.numOfLateDays = 0;
         this.fines = 0.0;
         this.finalCost = 0.0;
+
+        // Automatically increments the customer's    contract counter
+        this.customer.incrementContracts();
     }
 
     // The Termination
