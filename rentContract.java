@@ -61,6 +61,10 @@ public class Contract {
         System.out.println("The contract has been terminated successfully.");
     }
 
+    public double finalCost() {
+        return finalCost;
+     }
+
     public void printEndedContractsInfo() {
       System.out.println(
           "ID:" + ID
