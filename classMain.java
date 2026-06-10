@@ -207,8 +207,9 @@ public static void vehiclesManagementMenu() {
    System.out.println(
         "1- Add vehicle" 
       + "\n2- Remove vehicle"
-      + "\n3- Show the vvailable vehicles"
+      + "\n3- Show the available vehicles"
       + "\n4- Search for a vehicle"
+      + "\n5- Show all vehicle"
     );
    running = choiceVehiclesManagementMenu();
    }
@@ -225,28 +226,41 @@ public static boolean choiceVehiclesManagementMenu() {
       removeVehicle();
       return true;
     case 3: 
-      showVehicles();       
+      showTheAvailabeVehicles();       
       return true;
     case 4: 
       searchForVehicle();
       return true;
+    case 5:
+      showAllVehicles();
     default:
       return true;
+}
+
+public static void addVehicle() {
+
+}
+
+public static void removeVehicle() {
+
+}
+
+public static void showTheAvailabeVehicles() {
+
 }
    
 public static void searchForVehicle() {
 
 }
   
-public static void showVehicles() {
+public static void showAllVehicles() {
 
 }
   
-public static void removeVehicle() {
 
-}
   
-public static void addVehicle() {
+
+public static void showTheAvailabeVehicles() {
 
 }
 
