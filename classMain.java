@@ -47,7 +47,7 @@ public static void showAllContractsMenu() {
 }
 
 public static boolean choiceShowAllContracts() {
-   int choice = SafeInput.readIntRange("Enter the number of the service which you want: ", 1, 4);
+   int choice = SafeInput.readIntRange("Enter the number of the service which you want: ", 1, 2);
  
   switch(choice) {
     case 1: 
@@ -107,6 +107,41 @@ public static void vehiclesWithFine() {
 }
   
 public static void rentedVehiclesWithinAspecificPeriod() {
+
+}
+
+public static void contractsAndCustomersMenu() {
+  boolean running = true;
+  while(running){
+   System.out.println("Enter the ..... ");
+   System.out.println(
+        "1- Rented vehicles" 
+      + "\n2- Vehicles with fines"
+      + "\n3- Rented vehicles within a specific period"
+    );
+   running = choiceContractsAndCustomersMenu();
+   }
+}
+  
+public static void choiceContractsAndCustomersMenu() {
+   int choice = SafeInput.readIntRange("Enter the number of the service which you want: ", 1, 2);
+ 
+  switch(choice) {
+    case 1: 
+      contractsOfSpecificCustomerMenu();
+      return true;
+    case 2: 
+      customerWhoRentedAspecificCar();
+      return true;
+    default:
+      return true;
+}
+
+public static void contractsOfSpecificCustomerMenu() {
+
+}
+   
+public static void customerWhoRentedAspecificCar() {
 
 }
 
