@@ -191,10 +191,10 @@ public class SafeInput {
     }
 
 /*
- Reads a valid integer within a specific range.
+ Reads a valid integer within a specific range
  Re-prompts the user until a valid value is entered.
 */
-public static int readIntInRange(
+public static int readIntRange(
         String prompt,
         int min,
         int max) {
@@ -255,14 +255,14 @@ public static LocalDate readDate(String prompt) {
         }
 
         // MONTH
-        int month = readIntInRange(
+        int month = readIntRange(
             "Enter month: ",
             1,
             12
         );
 
         // DAY
-        int day = readIntInRange(
+        int day = readIntRange(
             "Enter day: ",
             1,
             31
