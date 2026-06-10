@@ -4,35 +4,6 @@ import java.util.ArrayList;
 class Main {
 
 // Contracts Management
-public static void showAllContracts() {
-
-}
-  
-public static void contractsAndVehicles() {
-
-}
-  
-public static void contractsAndCustomers() {
-
-}
-  
-public static boolean choiceContractsManagementMenu() {
-  int choice = SafeInput.readIntRange("Enter the number of the service which you want: ", 1, 4);
- 
-  switch(choice) {
-    case 1: 
-      showAllContracts();
-      return true;
-    case 2: 
-      contractsAndVehicles();
-      return true;
-    case 3: 
-      contractsAndCustomers();       
-      return true;
-    default:
-      return true;
-}
-  
 public static void contractsManagementMenu() {
    boolean running = true;
   while(running){
@@ -44,9 +15,100 @@ public static void contractsManagementMenu() {
     );
    running = choiceContractsManagementMenu();
    }
+}
+
+public static boolean choiceContractsManagementMenu() {
+  int choice = SafeInput.readIntRange("Enter the number of the service which you want: ", 1, 3);
+ 
+  switch(choice) {
+    case 1: 
+      showAllContractsMenu();
+      return true;
+    case 2: 
+      contractsAndVehiclesMenu();
+      return true;
+    case 3: 
+      contractsAndCustomersMenu();       
+      return true;
+    default:
+      return true;
+}
+  
+public static void showAllContractsMenu() {
+  boolean running = true;
+  while(running){
+   System.out.println("Enter the contracts status to display in the console: ");
+   System.out.println(
+        "1- Active contracts" 
+      + "\n2- Expired contracts"
+    );
+   running = choiceShowAllContracts();
+   }
+}
+
+public static boolean choiceShowAllContracts() {
+   int choice = SafeInput.readIntRange("Enter the number of the service which you want: ", 1, 4);
+ 
+  switch(choice) {
+    case 1: 
+      showActiveContracts();
+      return true;
+    case 2: 
+      showExpiredContracts();
+      return true;
+    default:
+      return true;
+}
+
+public static void showActiveContracts() {
+
+}
+  
+public static void showExpiredContracts() {
 
 }
 
+public static void contractsAndVehiclesMenu() {
+  boolean running = true;
+  while(running){
+   System.out.println("Enter the ..... ");
+   System.out.println(
+        "1- Rented vehicles" 
+      + "\n2- Vehicles with fines"
+      + "\n3- Rented vehicles within a specific period"
+    );
+   running = choiceContractsAndVehiclesMenu();
+   }
+}
+  
+public static void choiceContractsAndVehiclesMenu() {
+   int choice = SafeInput.readIntRange("Enter the number of the service which you want: ", 1, 3);
+ 
+  switch(choice) {
+    case 1: 
+      rentedVehicles();
+      return true;
+    case 2: 
+      vehiclesWithFines();
+      return true;
+    case 3: 
+      rentedVehiclesWithinAspecificPeriod();
+      return true;
+    default:
+      return true;
+}
+
+public static void rentedVehicles() {
+
+}
+  
+public static void vehiclesWithFine() {
+
+}
+  
+public static void rentedVehiclesWithinAspecificPeriod() {
+
+}
 
 // Customers Management
 public static void addCustomer() {
