@@ -191,71 +191,93 @@ public class SafeInput {
     }
 
 /*
+ Reads a valid integer within a specific range.
+ Re-prompts the user until a valid value is entered.
+*/
+public static int readIntInRange(
+        String prompt,
+        int min,
+        int max) {
+
+    while (true) {
+
+        int value = readInt(prompt);
+
+        if (value >= min && value <= max) {
+            return value;
+        }
+
+        System.out.println(
+            "Error: Enter a value between "
+            + min + " and " + max + "."
+        );
+    }
+}
+
+/*
  Reads a valid LocalDate from the user.
  Handles invalid calendar dates and validates
  year, month, and day ranges.
 */
 public static LocalDate readDate(String prompt) {
+
     while (true) {
+
         System.out.println(prompt);
 
         // YEAR
-        System.out.println("Please enter a valid year between 1900 and 2008.");
+        System.out.println(
+            "Please enter a valid year between 1900 and 2008."
+        );
 
-int year;
+        int year;
 
-while (true) {
+        while (true) {
 
-    year = readInt("Enter year: ");
+            year = readInt("Enter year: ");
 
-    if (year >= 1900 && year <= 2008) {
-        break;
-    }
+            if (year >= 1900 && year <= 2008) {
+                break;
+            }
 
-    if (year > 2008) {
-        System.out.println("User must be at least 18 years old.");
-    } else {
-        System.out.println("Invalid year.");
-    }
-}
+            if (year > 2008) {
+
+                System.out.println(
+                    "User must be at least 18 years old."
+                );
+
+            } else {
+
+                System.out.println(
+                    "Error: Year must be between 1900 and 2008."
+                );
+            }
+        }
 
         // MONTH
-        System.out.println(
- "Please enter a valid month between 1 and 12.");
-        int month;
-        while (true) {
-            month = readInt("Enter month: ");
-            if (month >= 1 && month <= 12) {
-                break;
-            } else {
-                System.out.println(
-     "Error: Month must be between 1 and 12.");
-            }
-        }
+        int month = readIntInRange(
+            "Enter month: ",
+            1,
+            12
+        );
 
         // DAY
-        System.out.println(
- "Please enter a valid day between 1 and 31.");
-        int day;
-        while (true) {
-            day = readInt("Enter day: ");
-            if (day >= 1 && day <= 31) {
-                break;
-            } else {
-                System.out.println(
-        "Error: Day must be between 1 and 31.");
-            }
-        }
+        int day = readIntInRange(
+            "Enter day: ",
+            1,
+            31
+        );
 
-        // Validate actual calendar date (ex: there is no 31/2 date!)
+        // Validate actual calendar date
         try {
+
             return LocalDate.of(year, month, day);
+
         } catch (DateTimeException e) {
+
             System.out.println(
-     "Error: The entered date does not exist. Please try again."
+                "Error: The entered date does not exist. Please try again."
             );
         }
     }
-}
-
 }
