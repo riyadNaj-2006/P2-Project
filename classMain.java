@@ -20,8 +20,10 @@ public static boolean choiceMainMenu(){
     case 4: 
       System.out.println("Thanks for your time!");
       return false;
+    default:
+      return true;
   }
- return true;
+ 
 }
 
 public static void mainMenu() {
