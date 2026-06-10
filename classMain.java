@@ -1,8 +1,60 @@
 package Test;
-
 import java.util.ArrayList;
 
 class Main {
+
+// Customers Management
+public static void addCustomer() {
+
+}
+
+public static void searchForCustomer() {
+
+}
+
+public static void showCustomers() {
+
+}
+
+public static void editCustomer() {
+
+}
+  
+public static boolean choiceCustomersManagementMenu() {
+  int choice = SafeInput.readIntRange("Enter the number of the service which you want: ", 1, 4);
+ 
+  switch(choice) {
+    case 1: 
+      addCustomer();
+      return true;
+    case 2: 
+      searchForCustomer();
+      return true;
+    case 3: 
+      showCustomers();       
+      return true;
+    case 4: 
+      editCustomer();
+      return true;
+    default:
+      return true;
+}
+  
+public static void customersManagementMenu() {
+   boolean running = true;
+  while(running){
+   System.out.println("\"Customers Management Section\"");
+   System.out.println(
+        "1- Add customer" 
+      + "\n2- Search for a customer"
+      + "\n3- Show all the customers"
+      + "\n4- Edit a customer's data"
+    );
+   running = choiceCustomersManagementMenu();
+   }
+
+}
+
 
 // Vehicles Management
 public static void searchForVehicle() {
@@ -65,7 +117,7 @@ public static boolean choiceMainMenu() {
       vehiclesManagementMenu();
       return true;
     case 2: 
-       System.out.println("customersManagementMenu()");
+      customersManagementMenu();
       return true;
     case 3: 
        System.out.println("contractsManagementMenu()");      
