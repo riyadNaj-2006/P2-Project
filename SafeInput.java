@@ -1,4 +1,6 @@
 import java.util.Scanner;
+import java.time.LocalDate;
+import java.time.DateTimeException;
 
 public class SafeInput {
 
@@ -50,7 +52,7 @@ public class SafeInput {
 
             } else {
 
-                System.out.println("Error: Please enter a valid double number.");
+                System.out.println("Error: Please enter a valid decimal number.");
                 in.nextLine(); // Clear input buffer
             }
         }
