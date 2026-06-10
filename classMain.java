@@ -5,21 +5,37 @@ import java.util.ArrayList;
 class Main {
 
 // Vehicles Management
-public static void choiceVehiclesManagementMenu() {
+public static void searchForVehicle() {
+
+}
+  
+public static void showVehicles() {
+
+}
+  
+public static void removeVehicle() {
+
+}
+  
+public static void addVehicle() {
+
+}
+
+public static boolean choiceVehiclesManagementMenu() {
   int choice = SafeInput.readIntRange("Enter the number of the service which you want: ", 1, 4);
  
   switch(choice) {
     case 1: 
-     
+      addVehicle();
       return true;
     case 2: 
-       
+      removeVehicle();
       return true;
     case 3: 
-             
+      showVehicles();       
       return true;
     case 4: 
-      
+      searchForVehicle();
       return true;
     default:
       return true;
