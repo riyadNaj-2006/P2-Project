@@ -33,7 +33,8 @@ public static boolean choiceContractsManagementMenu() {
     default:
       return true;
 }
-  
+
+// Contracts Management - Show all contracts   
 public static void showAllContractsMenu() {
   boolean running = true;
   while(running){
@@ -68,6 +69,7 @@ public static void showExpiredContracts() {
 
 }
 
+// Contracts Management - Contracts and Vehicle 
 public static void contractsAndVehiclesMenu() {
   boolean running = true;
   while(running){
@@ -110,14 +112,14 @@ public static void rentedVehiclesWithinAspecificPeriod() {
 
 }
 
+// Contracts Management - Contracts and Customers
 public static void contractsAndCustomersMenu() {
   boolean running = true;
   while(running){
    System.out.println("Enter the ..... ");
    System.out.println(
-        "1- Rented vehicles" 
-      + "\n2- Vehicles with fines"
-      + "\n3- Rented vehicles within a specific period"
+        "1- All contracts for a specific customer" 
+      + "\n2- Show the customers who rented a specific car"
     );
    running = choiceContractsAndCustomersMenu();
    }
@@ -146,22 +148,20 @@ public static void customerWhoRentedAspecificCar() {
 }
 
 // Customers Management
-public static void addCustomer() {
-
+public static void customersManagementMenu() {
+   boolean running = true;
+  while(running){
+   System.out.println("\"Customers Management Section\"");
+   System.out.println(
+        "1- Add customer" 
+      + "\n2- Search for a customer"
+      + "\n3- Show all the customers"
+      + "\n4- Edit a customer's data"
+    );
+   running = choiceCustomersManagementMenu();
+   }
 }
 
-public static void searchForCustomer() {
-
-}
-
-public static void showCustomers() {
-
-}
-
-public static void editCustomer() {
-
-}
-  
 public static boolean choiceCustomersManagementMenu() {
   int choice = SafeInput.readIntRange("Enter the number of the service which you want: ", 1, 4);
  
@@ -181,38 +181,37 @@ public static boolean choiceCustomersManagementMenu() {
     default:
       return true;
 }
-  
-public static void customersManagementMenu() {
+
+public static void addCustomer() {
+
+}
+
+public static void searchForCustomer() {
+
+}
+
+public static void showCustomers() {
+
+}
+
+public static void editCustomer() {
+
+}
+
+   
+// Vehicles Management
+public static void vehiclesManagementMenu() {
    boolean running = true;
   while(running){
-   System.out.println("\"Customers Management Section\"");
+   System.out.println("\"Vehicles Management Section\"");
    System.out.println(
-        "1- Add customer" 
-      + "\n2- Search for a customer"
-      + "\n3- Show all the customers"
-      + "\n4- Edit a customer's data"
+        "1- Add vehicle" 
+      + "\n2- Remove vehicle"
+      + "\n3- Show the vvailable vehicles"
+      + "\n4- Search for a vehicle"
     );
-   running = choiceCustomersManagementMenu();
+   running = choiceVehiclesManagementMenu();
    }
-
-}
-
-
-// Vehicles Management
-public static void searchForVehicle() {
-
-}
-  
-public static void showVehicles() {
-
-}
-  
-public static void removeVehicle() {
-
-}
-  
-public static void addVehicle() {
-
 }
 
 public static boolean choiceVehiclesManagementMenu() {
@@ -234,22 +233,24 @@ public static boolean choiceVehiclesManagementMenu() {
     default:
       return true;
 }
+   
+public static void searchForVehicle() {
+
+}
   
-public static void vehiclesManagementMenu() {
-   boolean running = true;
-  while(running){
-   System.out.println("\"Vehicles Management Section\"");
-   System.out.println(
-        "1- Add vehicle" 
-      + "\n2- Remove vehicle"
-      + "\n3- Show the vvailable vehicles"
-      + "\n4- Search for a vehicle"
-    );
-   running = choiceVehiclesManagementMenu();
-   }
+public static void showVehicles() {
+
+}
+  
+public static void removeVehicle() {
+
+}
+  
+public static void addVehicle() {
 
 }
 
+   
 // MAIN MENU
 public static boolean choiceMainMenu() {
   int choice = SafeInput.readIntRange("Enter the number of the service which you want: ", 1, 4);
