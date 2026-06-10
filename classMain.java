@@ -3,18 +3,18 @@ import java.util.ArrayList;
 class Main {
 
 public static boolean choiceMainMenu(){
-  int choice = SafeInput.readIntRange("Enter the number of the service which you want: , 1, 4);
+  int choice = SafeInput.readIntRange("Enter the number of the service which you want: ", 1, 4);
  
   switch(choice) {
     case 1: 
       vehiclesManagementMenu();
-      break;
+      return true;
     case 2: 
       customersManagementMenu();
-      break;
+      return true;
     case 3: 
       contractsManagementMenu();
-      break;
+      return true;
     case 4: 
       System.out.println("Thanks for your time!");
       return false;
@@ -25,11 +25,12 @@ public static void mainMenu() {
   boolean running = true;
   while(running){
    System.out.println("Welcome to our System, \nWhich service do you need?");
-   System.out.println("1- Vehicles Management  \n
-                       2- Customers Management \n
-                       3- Contracts Management \n
-                       4- Exit the Program     \n
-    ");
+   System.out.println(
+        "1- Vehicles Management" 
+      + "\n2- Customers Management"
+      + "\n3- Contracts Management"
+      + "\n4- Exit the Program"
+    );
    }
    running = choiceMainMenu();
 }
