@@ -12,13 +12,14 @@ public static void contractsManagementMenu() {
         "1- Show all contracts" 
       + "\n2- Contracts & Vehicles"
       + "\n3- Contracts & Customers"
+      + "\n4- Back to previous menu"
     );
    running = choiceContractsManagementMenu();
    }
 }
 
 public static boolean choiceContractsManagementMenu() {
-  int choice = SafeInput.readIntRange("Enter the number of the service which you want: ", 1, 3);
+  int choice = SafeInput.readIntRange("Enter the number of the service which you want: ", 1, 4);
  
   switch(choice) {
     case 1: 
@@ -30,6 +31,8 @@ public static boolean choiceContractsManagementMenu() {
     case 3: 
       contractsAndCustomersMenu();       
       return true;
+    case 4:        
+      return false;
     default:
       return true;
   }
@@ -43,13 +46,14 @@ public static void showAllContractsMenu() {
    System.out.println(
         "1- Active contracts" 
       + "\n2- Expired contracts"
+      + "\n3- Back to previous menu"
     );
    running = choiceShowAllContracts();
    }
 }
 
 public static boolean choiceShowAllContracts() {
-   int choice = SafeInput.readIntRange("Enter the number of the service which you want: ", 1, 2);
+   int choice = SafeInput.readIntRange("Enter the number of the service which you want: ", 1, 3);
  
   switch(choice) {
     case 1: 
@@ -58,6 +62,8 @@ public static boolean choiceShowAllContracts() {
     case 2: 
       showExpiredContracts();
       return true;
+    case 3: 
+      return false;
     default:
       return true;
   }
@@ -80,13 +86,14 @@ public static void contractsAndVehiclesMenu() {
         "1- Rented vehicles" 
       + "\n2- Vehicles with fines"
       + "\n3- Rented vehicles within a specific period"
+      + "\n4- Back to previous menu"
     );
    running = choiceContractsAndVehiclesMenu();
    }
 }
   
 public static boolean choiceContractsAndVehiclesMenu() {
-   int choice = SafeInput.readIntRange("Enter the number of the service which you want: ", 1, 3);
+   int choice = SafeInput.readIntRange("Enter the number of the service which you want: ", 1, 4);
  
   switch(choice) {
     case 1: 
@@ -98,6 +105,8 @@ public static boolean choiceContractsAndVehiclesMenu() {
     case 3: 
       rentedVehiclesWithinAspecificPeriod();
       return true;
+    case 4: 
+      return false;
     default:
       return true;
   }
@@ -123,13 +132,14 @@ public static boolean contractsAndCustomersMenu() {
    System.out.println(
         "1- All contracts for a specific customer" 
       + "\n2- Show the customers who rented a specific car"
+      + "\n3- Back to previous menu"
     );
    running = choiceContractsAndCustomersMenu();
    }
 }
   
 public static void choiceContractsAndCustomersMenu() {
-   int choice = SafeInput.readIntRange("Enter the number of the service which you want: ", 1, 2);
+   int choice = SafeInput.readIntRange("Enter the number of the service which you want: ", 1, 3);
  
   switch(choice) {
     case 1: 
@@ -138,6 +148,9 @@ public static void choiceContractsAndCustomersMenu() {
     case 2: 
       customerWhoRentedAspecificCar();
       return true;
+    case 3: 
+      customerWhoRentedAspecificCar();
+      return false;
     default:
       return true;
   }
@@ -161,13 +174,14 @@ public static void customersManagementMenu() {
       + "\n2- Search for a customer"
       + "\n3- Show all the customers"
       + "\n4- Edit a customer's data"
+      + "\n5- Back to previous menu"
     );
    running = choiceCustomersManagementMenu();
    }
 }
 
 public static boolean choiceCustomersManagementMenu() {
-  int choice = SafeInput.readIntRange("Enter the number of the service which you want: ", 1, 4);
+  int choice = SafeInput.readIntRange("Enter the number of the service which you want: ", 1, 5);
  
   switch(choice) {
     case 1: 
@@ -182,6 +196,8 @@ public static boolean choiceCustomersManagementMenu() {
     case 4: 
       editCustomer();
       return true;
+    case 5: 
+      return false;
     default:
       return true;
   }
@@ -215,13 +231,14 @@ public static void vehiclesManagementMenu() {
       + "\n3- Show the available vehicles"
       + "\n4- Search for a vehicle"
       + "\n5- Show all vehicle"
+      + "\n6- Back to previous menu"
     );
    running = choiceVehiclesManagementMenu();
    }
 }
 
 public static boolean choiceVehiclesManagementMenu() {
-  int choice = SafeInput.readIntRange("Enter the number of the service which you want: ", 1, 4);
+  int choice = SafeInput.readIntRange("Enter the number of the service which you want: ", 1, 6);
  
   switch(choice) {
     case 1: 
@@ -239,6 +256,8 @@ public static boolean choiceVehiclesManagementMenu() {
     case 5:
       showAllVehicles();
       return true;
+    case 6:
+      return false;
     default:
       return true;
   }
