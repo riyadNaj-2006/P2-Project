@@ -32,6 +32,7 @@ public static boolean choiceContractsManagementMenu() {
       return true;
     default:
       return true;
+  }
 }
 
 // Contracts Management - Show all contracts   
@@ -59,6 +60,7 @@ public static boolean choiceShowAllContracts() {
       return true;
     default:
       return true;
+  }
 }
 
 public static void showActiveContracts() {
@@ -83,7 +85,7 @@ public static void contractsAndVehiclesMenu() {
    }
 }
   
-public static void choiceContractsAndVehiclesMenu() {
+public static boolean choiceContractsAndVehiclesMenu() {
    int choice = SafeInput.readIntRange("Enter the number of the service which you want: ", 1, 3);
  
   switch(choice) {
@@ -98,6 +100,7 @@ public static void choiceContractsAndVehiclesMenu() {
       return true;
     default:
       return true;
+  }
 }
 
 public static void rentedVehicles() {
@@ -113,7 +116,7 @@ public static void rentedVehiclesWithinAspecificPeriod() {
 }
 
 // Contracts Management - Contracts and Customers
-public static void contractsAndCustomersMenu() {
+public static boolean contractsAndCustomersMenu() {
   boolean running = true;
   while(running){
    System.out.println("Enter the ..... ");
@@ -137,6 +140,7 @@ public static void choiceContractsAndCustomersMenu() {
       return true;
     default:
       return true;
+  }
 }
 
 public static void contractsOfSpecificCustomerMenu() {
@@ -180,6 +184,7 @@ public static boolean choiceCustomersManagementMenu() {
       return true;
     default:
       return true;
+  }
 }
 
 public static void addCustomer() {
@@ -233,8 +238,10 @@ public static boolean choiceVehiclesManagementMenu() {
       return true;
     case 5:
       showAllVehicles();
+      return true;
     default:
       return true;
+  }
 }
 
 public static void addVehicle() {
@@ -256,18 +263,11 @@ public static void searchForVehicle() {
 public static void showAllVehicles() {
 
 }
-  
-
-  
-
-public static void showTheAvailabeVehicles() {
-
-}
 
    
 // MAIN MENU
 public static boolean choiceMainMenu() {
-  int choice = SafeInput.readIntRange("Enter the number of the service which you want: ", 1, 4);
+  int choice = SafeInput.readIntRange("Enter the number of the service which you want: ", 1, 5);
  
   switch(choice) {
     case 1: 
@@ -277,15 +277,17 @@ public static boolean choiceMainMenu() {
       customersManagementMenu();
       return true;
     case 3: 
-       System.out.println("contractsManagementMenu()");      
+      contractsManagementMenu();     
       return true;
     case 4: 
+      reportsAndStatistics();
+      return true;
+    case 5: 
       System.out.println("Exit Successful.");
       return false;
     default:
       return true;
   }
- 
 }
 
 public static void mainMenu() {
@@ -296,7 +298,8 @@ public static void mainMenu() {
         "1- Vehicles Management" 
       + "\n2- Customers Management"
       + "\n3- Contracts Management"
-      + "\n4- Exit the Program"
+      + "\n4- Reports and Statistics"
+      + "\n5- Exit the Program"
     );
    running = choiceMainMenu();
    }
