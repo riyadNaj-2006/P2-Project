@@ -340,7 +340,25 @@ public static void addVehicle() {
 }
 
 public static void removeVehicle() {
-
+        String plateNum = SafeInput.readNumericString("Enter vehicle plate number to remove: ");
+        scanner.nextLine();
+  
+        boolean removed = false;
+        for (int i = 0; i < vehicles.size(); i++) {
+            if (vehicles.get(i).PlateNumber.equals(plateNum)) {
+                if (vehicles.get(i).Available == true) {
+                    vehicles.remove(vehicles.get(i));
+                    removed = true;
+                    System.out.println("Vehicle removed");
+                    break;
+                } else {
+                    System.out.println("Can't remove vehicle, vehicle is rented");
+                }
+            }
+        }
+        if (removed == false) {
+            System.out.println("Vehicle could not be found");
+        }
 }
 
 public static void showTheAvailabeVehicles() {
