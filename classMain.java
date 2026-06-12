@@ -1,7 +1,16 @@
-package Test;
 import java.util.ArrayList;
+import java.util.Scanner;
+import java.time.LocalDate;
 
 class Main {
+  
+  static Scanner scanner = new Scanner(System.in);
+    static ArrayList<Vehicle> vehicles = new ArrayList<>();
+    static ArrayList<Customer> customers = new ArrayList<>();
+    static ArrayList<Contract> contracts = new ArrayList<>();
+    static ArrayList<Contract> runningContracts = new ArrayList<>();
+    static ArrayList<Contract> endedContracts = new ArrayList<>();
+    static double balance = 100000;
 
 // Reports and Statistics
 public static void contractsAndVehiclesMenu() {
@@ -272,6 +281,61 @@ public static void vehiclesManagementMenu() {
 }
 
 public static void addVehicle() {
+  int type;
+        System.out.println();
+        type = SafeInput.readIntRange("Enter vehicle type: 1-Car \n2-Motorcycle \n3-Truck", 1, 3);
+        scanner.nextLine();
+  
+        System.out.println("Fill the following form:");
+        
+        String plateNumber = SafeInput.readNumericString("Plate Number: ");
+        
+        String brand = SafeInput.readNumericString("Brand: ");
+  
+        String model = SafeInput.readNumericString("Model: ");
+
+        double dailyPrice = SafeInput.readDouble("Daily Price: ");
+        scanner.nextLine();
+  
+        boolean available = SafeInput.readBoolean("Available (true/false): ");
+        scanner.nextLine();
+
+        Vehicle vehicle = null;
+
+        switch (type) {
+            case 1:
+                String fuelType = SafeInput.readString("Fuel Type (petrol/diesel/electric): ");
+                int numOfSeats = SafeInput.readInt("Number of Seats: ");
+                scanner.nextLine();
+                boolean AC = SafeInput.readBoolean("Air Condition (true/false): ");
+                scanner.nextLine();
+                vehicle = new Car(plateNumber, brand, model, dailyPrice, available, fuelType, numOfSeats, AC);
+                break;
+            
+            case 2:
+                double engineCapacity = SafeInput.readDouble("Engine Capacity (CC): ");
+                scanner.nextLine();
+                boolean sidecarAvailability = SafeInput.readBoolean("Sidecar Availability (true/false): ");
+                scanner.nextLine();
+                vehicle = new Motorcycle(plateNumber, brand, model, dailyPrice, available, engineCapacity,
+                        sidecarAvailability);
+                break;
+            
+            case 3:
+                double load = SafeInput.readDouble("Load Capacity (KG): ");
+                scanner.nextLine();
+                boolean fridge = SafeInput.readBoolean("Refrigeration Support (true/false): ");
+                scanner.nextLine();
+                vehicle = new Truck(plateNumber, brand, model, dailyPrice, available, load, fridge);
+                break;
+            default:
+                System.out.println("Invalid vehicle type!");
+                return;
+        }
+        vehicles.add(vehicle);
+        System.out.println("The " + vehicle.getType() + " has been added ");
+        System.out.println();
+    }
 
 }
 
@@ -334,9 +398,20 @@ public static void mainMenu() {
 
 
 public static void main(String[] args) {
-mainMenu();
 
+   vehicles.add(new Car("007568", "Toyota", "Camry", 50, true, "petrol", 5, true));
+        vehicles.add(new Car("007345", "Tesla", "Model 3", 42, true, "electric", 5, true));
+        vehicles.add(new Motorcycle("006578", "Harley", "Davidson", 35, true, 1200, true));
+        vehicles.add(new Motorcycle("002348", "Kawasaki", "Ninja H2R", 190, true, 998, false));
+        vehicles.add(new Truck("005364", "Volvo", "FH16", 90, true, 8000, true));
 
+        customers.add(
+          new Individual("0066", "Yessayie", "Damascus", "0994 592 915", 0, "06001237",
+              LocalDate.of(2007, 7, 13)));
+        customers.add(
+          new Company("0024", "Cham City Center", "Damascus", "011 562 8889", 0, 23, "CCDU7782"));
+
+        mainMenu();
 
 }
 }
