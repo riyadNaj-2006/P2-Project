@@ -365,8 +365,21 @@ public static void showTheAvailabeVehicles() {
 
 }
    
-public static void searchForVehicle() {
-
+public static void searchForVehicle() { // editttttttt
+        String plateNum = SafeInput.readNumericString("Enter plate number: ");
+        scanner.nextLine();
+  
+        boolean found = false;
+        for (Vehicle vehicle : vehicles) {
+            if (vehicle.PlateNumber.equals(plateNum)) {
+                vehicle.printinfo();
+                found = true;
+                break;
+            }
+        }
+        if (found == false) {
+            System.out.println("Vehicle not found");
+        }
 }
   
 public static void showAllVehicles() {
