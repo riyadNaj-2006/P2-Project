@@ -110,11 +110,23 @@ public static void showAllContractsMenu() {
 }
 
 public static void showActiveContracts() {
-
+   if (runningContracts.size() != 0) {
+            for (Contract contract : runningContracts) {
+                contract.printRunningContractsInfo();
+            }
+        } else {
+            System.out.println("There are no running contracts");
+        }
 }
   
 public static void showExpiredContracts() {
-
+  if (endedContracts.size() != 0) {
+            for (Contract contract : endedContracts) {
+                contract.printEndedContractsInfo();
+            }
+        } else {
+            System.out.println("There are no ended contracts");
+        }
 }
 
 // Contracts Management - Contracts and Vehicle 
@@ -151,7 +163,20 @@ public static void rentedVehicles() {
 }
   
 public static void vehiclesWithFine() {
-
+  int i = 1;
+      boolean found = false;
+       for (Contract contract : runningContracts) {
+         if (contract.shouldReturnDate.isBefore(LocalDate.now())) {
+               System.out.println("vehicle " + i + ":");
+               contract.vehicle.printinfo();
+              i++;
+              found = true;
+            }
+        }
+        if (!found) {
+            System.out.println("There are no vehicles with fines now");
+        }
+  
 }
   
 public static void rentedVehiclesWithinAspecificPeriod() {
@@ -184,11 +209,48 @@ public static boolean contractsAndCustomersMenu() {
 }
   
 public static void contractsOfSpecificCustomerMenu() {
-
+   scanner.nextLine();
+        String name = SafeInput.readString("Enter customer name: ");
+        int i = 1;
+        boolean found = false;
+        boolean foundContracts = false;
+        for (Customer customer : customers) {
+            if (customer.Name.equalsIgnoreCase(name)) {
+                found = true;
+                for (Contract contract : contracts) {
+                    if (contract.customer == customer) {
+                        foundContracts = true;
+                        System.out.println("Contract " + i + ":");
+                        contract.displayContractInfo();
+                        i++;
+                    }
+                }
+            }
+        }
+        if (!found) {
+            System.out.println("The name dosen't exist");
+        }
+        if (!foundContracts) {
+            System.out.println("The customer doesn't have any contracts");
+        }
 }
    
 public static void customerWhoRentedAspecificCar() {
-
+  scanner.nextLine();
+        String plateNum = SafeInput.readNumericString("Enter vehicle Plate Number:");
+        int i = 1;
+        boolean found = false;
+        for (Contract contract : contracts) {
+            if (contract.vehicle.PlateNumber.equals(plateNum)) {
+                System.out.println("Customer " + i + ":");
+                contract.customer.printinfo();
+                i++;
+                found = true;
+            }
+        }
+        if (!found) {
+            System.out.println("This vehicle has not been rented");
+        }
 }
 
 // Customers Management
