@@ -3,6 +3,47 @@ import java.util.ArrayList;
 
 class Main {
 
+// Reports and Statistics
+public static void contractsAndVehiclesMenu() {
+
+  while(true){
+   System.out.println("Enter the ..... ");
+   System.out.println(
+        "1- Company revenues" 
+      + "\n2- Most rented vehicles"
+      + "\n3- VIP customers"
+      + "\n4- Back to previous menu"
+    );
+  
+     int choice = SafeInput.readIntRange("Enter the number of the service which you want: ", 1, 4);
+ 
+     switch(choice) {
+       case 1: 
+         companyRevenues();
+         break;
+       case 2: 
+         mostRentedVehicles();
+         break;
+       case 3: 
+         vipCustomers();
+         break;
+       case 4: return;
+     }
+  }
+}
+
+public static void companyRevenues() {
+
+}
+  
+public static void mostRentedVehicles() {
+
+}
+  
+public static void vipCustomers() {
+
+}
+
 // Contracts Management
 public static void contractsManagementMenu() {
   
