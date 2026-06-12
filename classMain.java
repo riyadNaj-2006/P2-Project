@@ -226,19 +226,104 @@ public static void customersManagementMenu() {
 }
 
 public static void addCustomer() {
+    int type;
+        System.out.println
+        type = SafeInput.readIntRange("Enter customer type: 1-Individual \n2-Company",1,2);
+        scanner.nextLine();
+  
+        System.out.println("Fill the following form:");
+  
+        String ID = SafeInput.readNumericString("ID: "); // edittttt
+  
+        String name = SafeInput.readString("Name: ");
+  
+        System.out.print("Address: ");
+        String address = SafeInput.readString("Name: ");
+  
+        String phoneNumber = SafeInput.readString("Phone Number: ");
 
+        Customer customer = null;
+
+        switch (type) {
+            case 1:
+                String license = SafeInput.readString("Driving License Number: ");
+                LocalDate birth = SafeInput.readDate("Birth Date");
+                customer = new Individual(ID, name, address, phoneNumber, 0, license, birth);
+                break;
+
+            case 2:
+                String commercialRegistrationNumber = SafeInput.readNumericString("Commercial Registration Number: ");
+                double discountPercentage =  SafeInput.readDouble("Discount Percentage: ");
+                scanner.nextLine();
+                customer = new Company(ID, name, address, phoneNumber, 0, discountPercentage,
+                        commercialRegistrationNumber);
+                System.out.println();
+                break;
+            default:
+                System.out.println("Invalid Customer type");
+                return;
+        }
+        customers.add(customer);
+        System.out.println("Customer added");
 }
 
 public static void searchForCustomer() {
-
+        String ID = SafeInput.readString("Enter customer ID: "); //  edittttt
+        scanner.nextLine();
+  
+        boolean found = false;
+        for (Customer customer : customers) {
+            if (customer.ID.equals(ID)) {
+                customer.printinfo();
+                found = true;
+                break;
+            }
+        }
+        if (found == false) {
+            System.out.println("Customer not found");
+        }
 }
 
 public static void showCustomers() {
-
+  if (customers.size() != 0) {
+            for (int i = 0; i < customers.size(); i++) {
+                customers.get(i).printinfo();
+                System.out.println();
+            }
+        } else {
+            System.out.println("There are no customers");
+        }
 }
 
 public static void editCustomer() {
-
+        String ID = SafeInput.readNumericString("Enter Customer ID to update: ");
+        scanner.nextLine();
+  
+        boolean found = false;
+        for (Customer customer : customers) {
+            if (customer.ID.equals(ID)) {
+                found = true;
+                System.out.println("Current customer info:");
+                customer.printinfo();
+                System.out.println("Enter new info, or leave blank to keep current info");
+                String newName = SafeInput.readString("New name: ");
+                if (!newName.isEmpty()) {
+                    customer.Name = newName;
+                }
+                String newAddress = SafeInput.readNumericString("Address: ");
+                if (!newAddress.isEmpty()) {
+                    customer.Address = newAddress;
+                }
+                String newPhoneNumber = SafeInput.readNumericString("Phone Number: ");
+                if (!newPhoneNumber.isEmpty()) {
+                    customer.phoneNumber = newPhoneNumber;
+                }
+                break;
+            }
+        }
+        if (!found) {
+            System.out.println("Customer could not be found");
+        }
 }
 
    
