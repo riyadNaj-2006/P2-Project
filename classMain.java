@@ -362,7 +362,17 @@ public static void removeVehicle() {
 }
 
 public static void showTheAvailabeVehicles() {
-
+   boolean found = false;
+        for (int i = 0; i < vehicles.size(); i++) {
+            if (vehicles.get(i).Available) {
+                vehicles.get(i).printinfo();
+                found = true;
+                System.out.println();
+            }
+        }
+        if (!found) {
+            System.out.println("There are no available vehicles");
+        }
 }
    
 public static void searchForVehicle() { // editttttttt
@@ -383,9 +393,15 @@ public static void searchForVehicle() { // editttttttt
 }
   
 public static void showAllVehicles() {
-
+  if (vehicles.size() != 0) {
+            for (int i = 0; i < vehicles.size(); i++) {
+                vehicles.get(i).printinfo();
+                System.out.println();
+            }
+        } else {
+            System.out.println("There are no vehicles");
+        }
 }
-
    
 // MAIN MENU
 public static boolean choiceMainMenu() {
