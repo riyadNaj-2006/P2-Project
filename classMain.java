@@ -104,127 +104,113 @@ public static void contractsManagementMenu() {
 
 // Contracts Management - Create, End Contracts
 public static void rentVehicle() {
-     if (vehicles.size() == 0) {
-            System.out.println("There are no vehicles available for rent");
-            return;
+    if (vehicles.size() == 0) {
+        System.out.println("There are no vehicles available for rent");
+        return;
+    }
+    System.out.println("Here are the available vehicles");
+    showTheAvailabeVehicles();
+
+    String plateNum = SafeInput.readNumericString("Enter the plate number of the vehicle you want to rent: ");
+
+    Vehicle selectedVehicle = null;
+    for (Vehicle vehicle : vehicles) {
+        if (vehicle.plateNumber.equals(plateNum)) {
+            selectedVehicle = vehicle;
+            break;
         }
-        System.out.println("Here are the available vehicles");
-        showTheAvailabeVehicles();
-  
-        String plateNum = SafeInput.readNumericString("Enter the plate number of the vehicle you want to rent: ");
+    }
 
-        Vehicle selectedVehicle = null;
+    if (selectedVehicle == null) {
+        System.out.println("Vehicle not found or invalid plate number");
+        return;
+    }
 
-        for (Vehicle vehicle : vehicles) {
-            if (vehicle.PlateNumber.equals(plateNum)) {
-                selectedVehicle = vehicle;
-                break;
-            }
-        }
+    if (!selectedVehicle.available) {
+        System.out.println("This vehicle is not available for rent");
+        return;
+    }
 
-        if (selectedVehicle == null) {
-            System.out.println("Vehicle not found or invalid plate number");
-            return;
-        }
+    System.out.println("This is your vehicle:");
+    selectedVehicle.printinfo();
+    System.out.println("The daily price of the vehicle is: $" + selectedVehicle.DailyPrice);
 
-        if (!selectedVehicle.Available) {
-            System.out.println("This vehicle is not available for rent");
-            return;
-        }
+    if (selectedVehicle.getType().equals("Car")) {
+        System.out.println("The electric car costs extra 5%");
+    } else if (selectedVehicle.getType().equals("Motorcycle")) {
+        System.out.println("The sidecar costs extra 2%");
+    } else if (selectedVehicle.getType().equals("Truck")) {
+        System.out.println("The refrigeration costs extra 5%");
+    }
 
-       System.out.println("This is your vehicle:");
-        selectedVehicle.printinfo();
-         System.out.println("The daily price of the vehicle is: $" + selectedVehicle.DailyPrice);
+    System.out.println("Each late day of the return costs extra 10%");
+    System.out.println("If you rent a vehicle and return it before the return date, you still have to pay for the full contract days");
 
-        if (selectedVehicle.getType().equals("Car")) {
-            System.out.println("The electric car costs extra 5%");
-        } else if (selectedVehicle.getType().equals("Motorcycle")) {
-            System.out.println("The sidecar costs extra 2%");
-        } else if (selectedVehicle.getType().equals("Truck")) {
-            System.out.println("The refrigeration costs extra 5%");
-        }
-
-        System.out.println("Each late day of the return costs extra 10%");
-        System.out.println(
-                "If you rent a vehicle and return it before the return date, you still have to pay for the full contract days");
-
-        showCustomers();
-        Customer contractCustomer = null;
+    showCustomers();
+    Customer contractCustomer = null;
 
     while (contractCustomer == null) {
-            System.out.println("\nPress 1 to enter your ID");
-            System.out.println("Press 2 to add yourself as a new customer");
-            System.out.println("Press 3 to cancel rental");
+        System.out.println("\nPress 1 to enter your ID");
+        System.out.println("Press 2 to add yourself as a new customer");
+        System.out.println("Press 3 to cancel rental");
 
-            int choice = SafeInput.readIntRange("Your choice: ",1,3);
+        int choice = SafeInput.readIntRange("Your choice: ", 1, 3);
 
-            if (choice == 1) {
-                String ID = SafeInput.readNumericString("Enter your ID: ");
-
-                boolean customerFound = false;
-                for (Customer customer : customers) {
-                    if (customer.ID.equals(ID)) {
-                        contractCustomer = customer;
-                        customerFound = true;
-                        break;
-                    }
+        if (choice == 1) {
+            String ID = SafeInput.readNumericString("Enter your ID: ");
+            boolean customerFound = false;
+            for (Customer customer : customers) {
+                if (customer.ID.equals(ID)) {
+                    contractCustomer = customer;
+                    customerFound = true;
+                    break;
                 }
-
-              if (!customerFound) {
-                    System.out.println("Customer ID not found. Please try again or register as a new customer.");
-                }
-
-            } else if (choice == 2) {
-                System.out.println("Please use the 'Add Customer' option from the main menu first.");
-                System.out.println("Then come back to rent a vehicle.");
-                return;
-
-            } else if (choice == 3) {
-                System.out.println("Rental cancelled.");
-                return;
-
-            } else {
-                System.out.println("Invalid choice. Please enter 1, 2, or 3.");
             }
-        }
-
-        String prefix = "";
-        if (selectedVehicle.getType().equals("Car")) {
-            prefix = "CAR";
-        } else if (selectedVehicle.getType().equals("Motorcycle")) {
-            prefix = "MTR";
-        } else if (selectedVehicle.getType().equals("Truck")) {
-            prefix = "TRK";
-        }
-
-        int number = contracts.size() + 101;
-        String finalContractID = prefix + number;
-     
-        LocalDate rentStartDate = SafeInput.readDate("\"Rental Dates\"");
-
-        int numOfRentDays = ((rentEndDate.getYear() * 365) + rentEndDate.getDayOfYear())
-                - ((rentStartDate.getYear() * 365) + rentStartDate.getDayOfYear());
-
-        if (numOfRentDays <= 0) {
-            System.out.println("Error: End date must be after start date!");
+            if (!customerFound) {
+                System.out.println("Customer ID not found. Please try again or register as a new customer.");
+            }
+        } else if (choice == 2) {
+            System.out.println("Please use the 'Add Customer' option from the main menu first.");
+            System.out.println("Then come back to rent a vehicle.");
+            return;
+        } else if (choice == 3) {
+            System.out.println("Rental cancelled.");
             return;
         }
-
-        double contractBasePrice = selectedVehicle.DailyPrice * numOfRentDays;
-
-        selectedVehicle.Available = false;
-
-        Contract contract = new Contract(finalContractID, selectedVehicle, contractCustomer,
-                rentStartDate, numOfRentDays, contractBasePrice);
-        contracts.add(contract);
-        runningContracts.add(contract);
-
-        System.out.println("Rental successful!");
-        System.out.println("Contract ID: " + finalContractID);
-        System.out.println("Total days: " + numOfRentDays);
-        System.out.println("Base price: $" + contractBasePrice);
-        System.out.println("Vehicle has been marked as unavailable.");
     }
+
+    String prefix = "";
+    if (selectedVehicle.getType().equals("Car")) {
+        prefix = "CAR";
+    } else if (selectedVehicle.getType().equals("Motorcycle")) {
+        prefix = "MTR";
+    } else if (selectedVehicle.getType().equals("Truck")) {
+        prefix = "TRK";
+    }
+
+    int number = contracts.size() + 101;
+    String finalContractID = prefix + number;
+ 
+    LocalDate rentStartDate = SafeInput.readDate("\"Rental Start Date\"");
+    int numOfRentDays = SafeInput.readIntRange("Enter number of rental days: ", 1, 365); 
+
+    double contractBasePrice = selectedVehicle.DailyPrice * numOfRentDays;
+
+    selectedVehicle.Available = false;
+
+    Contract contract = new Contract(finalContractID, selectedVehicle, contractCustomer,
+            rentStartDate, numOfRentDays, contractBasePrice);
+            
+    contracts.add(contract);
+    runningContracts.add(contract);
+
+    System.out.println("Rental successful!");
+    System.out.println("Contract ID: " + finalContractID);
+    System.out.println("Total days: " + numOfRentDays);
+    System.out.println("Base price: $" + contractBasePrice);
+    System.out.println("Vehicle has been marked as unavailable.");
+}
+
 
 public static void returnVehicle() {
         String contractID = SafeInput.readNumericString("Enter contract ID");
