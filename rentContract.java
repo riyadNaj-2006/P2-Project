@@ -1,7 +1,7 @@
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit; // Just to calculate the time between days
 
-public class rentContract {
+public class Contract {
     // Basic attributes
     String ID;
     Vehicle vehicle;
