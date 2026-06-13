@@ -42,7 +42,11 @@ public static void reportsAndStatisticsMenu() {
 }
 
 public static void companyRevenues() {
-
+  double totalRevenue = 0;
+    for (Contract contract : endedContracts) {
+        totalRevenue += contract.totalCost;
+    }
+    System.out.println( "Company revenues : " + totalRevenue);
 }
   
 public static void mostRentedVehicles() {
