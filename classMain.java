@@ -15,7 +15,7 @@ class Main {
 public static void reportsAndStatisticsMenu() {
 
   while(true){
-   System.out.println("Enter the ..... ");
+   System.out.println();
    System.out.println(
         "1- Company revenues" 
       + "\n2- Most rented vehicles"
@@ -103,19 +103,19 @@ public static void mostRentedVehicles() {
 public static void vipCustomers() {
     System.out.println("\"VIP Customers Report\"");
     
-    boolean found = false;
+    boolean isfound = false;
     int i = 1;
     
     for (Customer customer : customers) {
         if (customer.getNumberOfContracts() >= 5) {
             System.out.println("Customer " + i + ":");
             customer.printInfo();
-            found = true;
+            isfound = true;
             i++;
         }
     }
     
-    if (!found) {
+    if (!isfound) {
         System.out.println("There are no VIP customers");
     }
     System.out.println();
@@ -305,14 +305,14 @@ public static void returnVehicle() {
 public static void showAllContractsMenu() {
   
   while(true){
-   System.out.println("Enter the contracts status to display in the console: ");
+   System.out.println();
    System.out.println(
         "1- Active contracts" 
       + "\n2- Expired contracts"
       + "\n3- Back to previous menu"
     );
   
-     int choice = SafeInput.readIntRange("Enter the number of the service which you want: ", 1, 3);
+     int choice = SafeInput.readIntRange("Enter the contracts status to display: ", 1, 3);
  
      switch(choice) {
         case 1: 
@@ -351,7 +351,7 @@ public static void showExpiredContracts() {
 public static void contractsAndVehiclesMenu() {
 
   while(true){
-   System.out.println("Enter the ..... ");
+   System.out.println();
    System.out.println(
         "1- Rented vehicles" 
       + "\n2- Vehicles with fines"
@@ -377,7 +377,19 @@ public static void contractsAndVehiclesMenu() {
 }
 
 public static void rentedVehicles() {
-
+  int i = 1;
+        boolean isfound = false;
+        for (Vehicle vehicle : vehicles) {
+            if (!vehicle.available) {
+                System.out.println("vehicle " + i + ":");
+                vehicle.printInfo();
+                i++;
+                isfound = true;
+            }
+        }
+        if (!isfound) {
+            System.out.println("There are no rented vehicles now!");
+        }
 }
   
 public static void vehiclesWithFines() {
@@ -404,7 +416,7 @@ public static void rentedVehiclesWithinAspecificPeriod() {
 // Contracts Management - Contracts and Customers
 public static void contractsAndCustomersMenu() {
   while(true){
-   System.out.println("Enter the ..... ");
+   System.out.println();
    System.out.println(
         "1- All contracts for a specific customer" 
       + "\n2- Show the customers who rented a specific car"
@@ -639,13 +651,13 @@ public static void vehiclesManagementMenu() {
 public static void addVehicle() {
   int type;
         System.out.println();
-        type = SafeInput.readIntRange("Enter vehicle type: 1-Car \n2-Motorcycle \n3-Truck", 1, 3);
+        type = SafeInput.readIntRange("1-Car \n2-Motorcycle \n3-Truck \nEnter vehicle type: ", 1, 3);
   
         System.out.println("Fill the following form:");
         
         String plateNumber = SafeInput.readNumericString("Plate Number: ");
         
-        String brand = SafeInput.readNumericString("Brand: ");
+        String brand = SafeInput.readString("Brand: ");
   
         String model = SafeInput.readNumericString("Model: ");
 
@@ -756,7 +768,7 @@ public static void mainMenu() {
       + "\n5- Exit the Program"
     );
    
-    int choice = SafeInput.readIntRange("Enter the number of the service which you want: ", 1, 5);
+    int choice = SafeInput.readIntRange("\nEnter the number of the service which you want: ", 1, 5);
  
   switch(choice) {
     case 1: 
@@ -794,7 +806,7 @@ public static void main(String[] args) {
         customers.add(
           new Company("0024", "Cham City Center", "Damascus", "011 562 8889", 23, "CCDU7782"));
 
-        System.out.println("Welcome to our System");
+        System.out.println("\nWelcome to our System!");
         mainMenu();
 
 }
