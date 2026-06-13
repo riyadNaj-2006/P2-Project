@@ -33,11 +33,11 @@ class Truck extends Vehicle {
      System.out.println("Vehicle Type : Truck");
      System.out.println(
          "Plate Number:" + plateNumber
-       + ", Brand:" + Brand 
-       + ", Model:" + Model);
+       + ", Brand:" + brand 
+       + ", Model:" + model);
      System.out.println(
          "Daily Price:" + dailyPrice
-       + ", Available:" + (Available ? "Yes" : "No"));
+       + ", Available:" + (available ? "Yes" : "No"));
      System.out.println(
          "Load Capacity:" + loadCapacity
        + "KG" 
