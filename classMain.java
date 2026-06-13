@@ -213,53 +213,36 @@ public static void rentVehicle() {
 
 
 public static void returnVehicle() {
-        String contractID = SafeInput.readNumericString("Enter contract ID");
-        boolean found = false;
-        for (Contract contract : contracts) {
-            if (contract.ID.equals(contractID)) {
-                found = true;
+    String contractID = SafeInput.readNumericString("Enter contract ID: ");
+    boolean found = false;
+    
+    for (Contract contract : contracts) {
+        if (contract.ID.equals(contractID)) {
+            found = true;
 
-                LocalDate ReturnDate = SafeInput.readDate("Enter the return date:");
+            LocalDate returnDate = SafeInput.readDate("Enter the actual return date: ");
 
-                if (((ReturnDate.getYear() * 365) + ReturnDate.getDayOfYear())
-                        - ((contract.shouldReturnDate.getYear() * 365)
-                                + contract.shouldReturnDate.getDayOfYear()) > 0) {
-                    contract.numOfLateDays = ((ReturnDate.getYear() * 365) + ReturnDate.getDayOfYear())
-                            - ((contract.shouldReturnDate.getYear() * 365)
-                                    + contract.shouldReturnDate.getDayOfYear());
-                    contract.actualReturnDate = ReturnDate;
-                } else {
-                    contract.actualReturnDate = ReturnDate;
-                }
-
-                int lateDays = ((ReturnDate.getYear() * 365) + ReturnDate.getDayOfYear())
-                        - ((contract.shouldReturnDate.getYear() * 365) + contract.shouldReturnDate.getDayOfYear());
-                if (lateDays > 0) {
-                    contract.numOfLateDays = lateDays;
-                    double startPrice = contract.basePrice + contract.vehicle.extraCost();
-                    double startPriceWithDiscount = startPrice * (1 - contract.customer.getDiscountRate());
-                    contract.fines = lateDays * startPriceWithDiscount * 0.1;
-                } else {
-                    contract.numOfLateDays = 0;
-                    contract.fines = 0;
-                }
-
-                System.out.println("Final Bill");
-                System.out.println("Base Cost: $" + contract.basePrice);
-                System.out.println("Fines: $" + contract.fines);
-                System.out.println("Final Cost: $" + contract.finalCost());
-                balance += contract.finalCost();
-                contract.customer.numberOfContracts++;
-                contract.vehicle.Available = true;
-                runningContracts.remove(contract);
-                endedContracts.add(contract);
-                break;
-            }
+            contract.endContract(returnDate);
+ 
+            System.out.println("\n\"Final Bill\"");
+            System.out.println("Base Cost: $" + contract.basePrice);
+            System.out.println("Fines: $" + contract.fines);
+            System.out.println("Final Cost: $" + contract.finalCost());
+            
+            balance += contract.finalCost();
+            contract.vehicle.Available = true;
+            
+            runningContracts.remove(contract);
+            endedContracts.add(contract);
+            break;
         }
-        if (!found) {
-            System.out.println("Couldn't find contract ID ");
-        }
+    }
+    
+    if (!found) {
+        System.out.println("Couldn't find contract ID.");
+    }
 }
+
 
 // Contracts Management - Show all contracts   
 public static void showAllContractsMenu() {
