@@ -42,7 +42,7 @@ public static void reportsAndStatisticsMenu() {
 }
 
 public static void companyRevenues() {
-    System.out.println("Company Revenues Report");
+    System.out.println("\"Company Revenues Report\"");
     
     double totalRentalRevenues = 0;
     
@@ -57,24 +57,71 @@ public static void companyRevenues() {
 
 
 public static void mostRentedVehicles() {
-
-}
-  
-public static void vipCustomers() {
-        boolean found = false;
-        int i = 1;
-        for (Customer customer : customers) {
-            if (customer.numberOfContracts >= 5) {
-                System.out.println("Customer " + i + ":");
-                customer.printinfo();
-                found = true;
-                i++;
+    System.out.println("\"Most Rented Vehicles\"");
+    
+    if (vehicles.isEmpty()) {
+        System.out.println("There are no vehicles registered in the system.");
+        return;
+    }
+    
+    int maxRentCount = 0;
+    
+    for (Vehicle vehicle : vehicles) {
+        int currentVehicleCount = 0;
+        for (Contract contract : contracts) {
+            if (contract.vehicle.plateNumber.equals(vehicle.plateNumber)) {
+                currentVehicleCount++;
             }
         }
-        if (!found) {
-            System.out.println("There are no VIP customers");
+        if (currentVehicleCount > maxRentCount) {
+            maxRentCount = currentVehicleCount;
         }
     }
+    
+    if (maxRentCount == 0) {
+        System.out.println("No vehicles have been rented yet.");
+        System.out.println();
+        return;
+    }
+    
+    System.out.println("Top rented vehicle(s) with (" + maxRentCount + ") total rentals:\n");
+    for (Vehicle vehicle : vehicles) {
+        int currentVehicleCount = 0;
+        for (Contract contract : contracts) {
+            if (contract.vehicle.plateNumber.equals(vehicle.plateNumber)) {
+                currentVehicleCount++;
+            }
+        }
+        if (currentVehicleCount == maxRentCount) {
+            vehicle.printInfo();
+            System.out.println("Rental Frequency: " + currentVehicleCount + " times.");
+            System.out.println();
+        }
+    }
+}
+
+  
+public static void vipCustomers() {
+    System.out.println("\"VIP Customers Report\"");
+    
+    boolean found = false;
+    int i = 1;
+    
+    for (Customer customer : customers) {
+        if (customer.getNumberOfContracts() >= 5) {
+            System.out.println("Customer " + i + ":");
+            customer.printInfo();
+            found = true;
+            i++;
+        }
+    }
+    
+    if (!found) {
+        System.out.println("There are no VIP customers");
+    }
+    System.out.println();
+}
+
 
 // Contracts Management
 public static void contractsManagementMenu() {
