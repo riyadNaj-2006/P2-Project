@@ -49,9 +49,56 @@ public static void companyRevenues() {
     System.out.println( "Company revenues : " + totalRevenue);
 }
   
+// 2. Most Rented Vehicles Statistics (One-Pass Approach)
 public static void mostRentedVehicles() {
+    System.out.println("--- Most Rented Vehicles ---");
+    
+    if (contracts.isEmpty()) {
+        System.out.println("No contracts found to determine vehicle statistics.");
+        return;
+    }
 
+    int maxRentals = 0;
+    // Temporary list to keep track of the current top leader(s)
+    ArrayList<Vehicle> topVehicles = new ArrayList<>();
+
+    // One-Pass: Loop through vehicles and find leaders dynamically
+    for (Vehicle vehicle : vehicles) {
+        int currentVehicleCount = 0;
+        
+        // Count rentals for the current vehicle
+        for (Contract contract : contracts) {
+            if (contract.vehicle.PlateNumber.equals(vehicle.PlateNumber)) {
+                currentVehicleCount++;
+            }
+        }
+        
+        // Scenario A: We found a new absolute leader
+        if (currentVehicleCount > maxRentals) {
+            maxRentals = currentVehicleCount;
+            topVehicles.clear(); // Clear previous lower-ranking vehicles
+            topVehicles.add(vehicle); // Add the new leader
+        } 
+        // Scenario B: We found a vehicle that ties with the current leader
+        else if (currentVehicleCount == maxRentals && maxRentals > 0) {
+            topVehicles.add(vehicle);
+        }
+    }
+
+    // Print results from the accumulated topVehicles list
+    if (topVehicles.isEmpty() || maxRentals == 0) {
+        System.out.println("No vehicles have been rented yet.");
+        return;
+    }
+
+    System.out.println("Highest number of rentals per vehicle: " + maxRentals);
+    for (Vehicle v : topVehicles) {
+        System.out.println("- Plate Number: " + v.PlateNumber);
+        v.printinfo();
+        System.out.println();
+    }
 }
+
   
 public static void vipCustomers() {
 
