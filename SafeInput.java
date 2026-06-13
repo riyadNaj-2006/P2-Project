@@ -227,18 +227,13 @@ public static LocalDate readDate(String prompt) {
 
         // YEAR
         int currentYear = LocalDate.now().getYear(); 
-        int maxYear = currentYear - 18; 
-
-        System.out.print(
-         "Please enter your birth year (User must be at least 18 years old): "
-        );
 
         int year;
 
         while (true) {
           year = readInt("Enter year:  ");
 
-          if (year <= maxYear) {
+          if (year <= currentYear && year >= currentYear-100) {
             break; 
            }
 
