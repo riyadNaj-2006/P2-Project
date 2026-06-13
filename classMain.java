@@ -66,33 +66,50 @@ public static void vipCustomers() {
     }
 
 // Contracts Management
+// تحديث قائمة العقود لتشمل التأجير والإعادة
 public static void contractsManagementMenu() {
-  
   while(true){
-    System.out.println("\"Contracts Management Section\"");
+    System.out.println("\n\"Contracts Management Section\"");
     System.out.println(
-        "1- Show all contracts" 
-      + "\n2- Contracts & Vehicles"
-      + "\n3- Contracts & Customers"
-      + "\n4- Back to previous menu"
+        "1- Rent a Vehicle (Create Contract)" 
+      + "\n2- Return a Vehicle (End Contract)"
+      + "\n3- Show all contracts" 
+      + "\n4- Contracts & Vehicles"
+      + "\n5- Contracts & Customers"
+      + "\n6- Back to previous menu"
      );
 
-     int choice = SafeInput.readIntRange("Enter the number of the service which you want: ", 1, 4);
+     int choice = SafeInput.readIntRange("Enter choice: ", 1, 6);
  
      switch(choice) {
        case 1: 
-         showAllContractsMenu();
+         rentVehicle(); 
          break;
        case 2: 
-         contractsAndVehiclesMenu();
+         returnVehicle(); 
          break;
        case 3: 
-         contractsAndCustomersMenu();       
+         showAllContractsMenu(); 
          break;
-       case 4: return;
+       case 4: 
+         contractsAndVehiclesMenu(); 
+         break;
+       case 5: 
+         contractsAndCustomersMenu(); 
+         break;
+       case 6: 
+         return;
      }
-
    }
+}
+
+// Contracts Management - Create, End Contracts
+public static void rentVehicle() {
+ 
+}
+
+public static void returnVehicle() {
+
 }
 
 // Contracts Management - Show all contracts   
