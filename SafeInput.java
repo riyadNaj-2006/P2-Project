@@ -226,33 +226,26 @@ public static LocalDate readDate(String prompt) {
         System.out.println(prompt);
 
         // YEAR
-        System.out.println(
-            "Please enter a valid year between 1900 and 2008."
+        int currentYear = LocalDate.now().getYear(); 
+        int maxYear = currentYear - 18; 
+
+        System.out.print(
+         "Please enter your birth year (User must be at least 18 years old): "
         );
 
         int year;
 
         while (true) {
+          year = readInt("Enter year:  ");
 
-            year = readInt("Enter year: ");
+          if (year <= maxYear) {
+            break; 
+           }
 
-            if (year >= 1900 && year <= 2008) {
-                break;
-            }
-
-            if (year > 2008) {
-
-                System.out.println(
-                    "User must be at least 18 years old."
-                );
-
-            } else {
-
-                System.out.println(
-                    "Error: Year must be between 1900 and 2008."
-                );
-            }
-        }
+      System.out.println(
+        "User must be at least 18 years old."
+    );
+   }
 
         // MONTH
         int month = readIntRange(
