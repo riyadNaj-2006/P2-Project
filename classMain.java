@@ -42,8 +42,19 @@ public static void reportsAndStatisticsMenu() {
 }
 
 public static void companyRevenues() {
-  
+    System.out.println("Company Revenues Report");
+    
+    double totalRentalRevenues = 0;
+    
+    for (Contract contract : endedContracts) {
+        totalRentalRevenues += contract.finalCost(); 
+    }
+    
+    System.out.println("Total Revenues from Ended Contracts: $" + totalRentalRevenues);
+    System.out.println("Current Treasury Balance: $" + balance);
+    System.out.println();
 }
+
 
 public static void mostRentedVehicles() {
 
