@@ -184,7 +184,7 @@ public static void rentedVehiclesWithinAspecificPeriod() {
 }
 
 // Contracts Management - Contracts and Customers
-public static boolean contractsAndCustomersMenu() {
+public static void contractsAndCustomersMenu() {
   while(true){
    System.out.println("Enter the ..... ");
    System.out.println(
@@ -479,8 +479,6 @@ public static void addVehicle() {
         vehicles.add(vehicle);
         System.out.println("The " + vehicle.getType() + " has been added ");
         System.out.println();
-    }
-
 }
 
 public static void removeVehicle() {
