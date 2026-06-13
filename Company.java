@@ -22,7 +22,6 @@ public class Company extends Customer {
         this.commercialRecord = commercialRecord;
     }
 
-    @Override
     public double getDiscountRate() {
         return discountRate / 100;
     }
