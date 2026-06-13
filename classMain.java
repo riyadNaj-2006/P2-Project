@@ -3,7 +3,6 @@ import java.util.Scanner;
 import java.time.LocalDate;
 
 class Main {
-  
   static Scanner scanner = new Scanner(System.in);
     static ArrayList<Vehicle> vehicles = new ArrayList<>();
     static ArrayList<Customer> customers = new ArrayList<>();
@@ -190,8 +189,8 @@ public static void rentVehicle() {
     }
 
     System.out.println("This is your vehicle:");
-    selectedVehicle.printinfo();
-    System.out.println("The daily price of the vehicle is: $" + selectedVehicle.DailyPrice);
+    selectedVehicle.printInfo();
+    System.out.println("The daily price of the vehicle is: $" + selectedVehicle.dailyPrice);
 
     if (selectedVehicle.getType().equals("Car")) {
         System.out.println("The electric car costs extra 5%");
@@ -252,9 +251,9 @@ public static void rentVehicle() {
     LocalDate rentStartDate = SafeInput.readDate("\"Rental Start Date\"");
     int numOfRentDays = SafeInput.readIntRange("Enter number of rental days: ", 1, 365); 
 
-    double contractBasePrice = selectedVehicle.DailyPrice * numOfRentDays;
+    double contractBasePrice = selectedVehicle.dailyPrice * numOfRentDays;
 
-    selectedVehicle.Available = false;
+    selectedVehicle.available = false;
 
     Contract contract = new Contract(finalContractID, selectedVehicle, contractCustomer,
             rentStartDate, numOfRentDays, contractBasePrice);
@@ -288,7 +287,7 @@ public static void returnVehicle() {
             System.out.println("Final Cost: $" + contract.finalCost());
             
             balance += contract.finalCost();
-            contract.vehicle.Available = true;
+            contract.vehicle.available = true;
             
             runningContracts.remove(contract);
             endedContracts.add(contract);
@@ -387,7 +386,7 @@ public static void vehiclesWithFines() {
        for (Contract contract : runningContracts) {
          if (contract.shouldReturnDate.isBefore(LocalDate.now())) {
                System.out.println("vehicle " + i + ":");
-               contract.vehicle.printinfo();
+               contract.vehicle.printInfo();
               i++;
               found = true;
             }
@@ -434,7 +433,7 @@ public static void contractsOfSpecificCustomerMenu() {
         boolean found = false;
         boolean foundContracts = false;
         for (Customer customer : customers) {
-            if (customer.Name.equalsIgnoreCase(name)) {
+            if (customer.name.equalsIgnoreCase(name)) {
                 found = true;
                 for (Contract contract : contracts) {
                     if (contract.customer == customer) {
@@ -460,9 +459,9 @@ public static void customerWhoRentedAspecificCar() {
         int i = 1;
         boolean found = false;
         for (Contract contract : contracts) {
-            if (contract.vehicle.PlateNumber.equals(plateNum)) {
+            if (contract.vehicle.plateNumber.equals(plateNum)) {
                 System.out.println("Customer " + i + ":");
-                contract.customer.printinfo();
+                contract.customer.printInfo();
                 i++;
                 found = true;
             }
@@ -526,14 +525,14 @@ public static void addCustomer() {
             case 1:
                 String license = SafeInput.readString("Driving License Number: ");
                 LocalDate birth = SafeInput.readDate("Birth Date");
-                customer = new Individual(ID, name, address, phoneNumber, 0, license, birth);
+                customer = new Individual(ID, name, address, phoneNumber, license, birth);
                 break;
 
             case 2:
                 String commercialRegistrationNumber = SafeInput.readNumericString("Commercial Registration Number: ");
                 double discountPercentage =  SafeInput.readDouble("Discount Percentage: ");
                 scanner.nextLine();
-                customer = new Company(ID, name, address, phoneNumber, 0, discountPercentage,
+                customer = new Company(ID, name, address, phoneNumber, discountPercentage,
                         commercialRegistrationNumber);
                 System.out.println();
                 break;
@@ -552,7 +551,7 @@ public static void searchForCustomer() {
         boolean found = false;
         for (Customer customer : customers) {
             if (customer.ID.equals(ID)) {
-                customer.printinfo();
+                customer.printInfo();
                 found = true;
                 break;
             }
@@ -565,7 +564,7 @@ public static void searchForCustomer() {
 public static void showCustomers() {
   if (customers.size() != 0) {
             for (int i = 0; i < customers.size(); i++) {
-                customers.get(i).printinfo();
+                customers.get(i).printInfo();
                 System.out.println();
             }
         } else {
@@ -582,15 +581,15 @@ public static void editCustomer() {
             if (customer.ID.equals(ID)) {
                 found = true;
                 System.out.println("Current customer info:");
-                customer.printinfo();
+                customer.printInfo();
                 System.out.println("Enter new info, or leave blank to keep current info");
                 String newName = SafeInput.readString("New name: ");
                 if (!newName.isEmpty()) {
-                    customer.Name = newName;
+                    customer.name = newName;
                 }
                 String newAddress = SafeInput.readNumericString("Address: ");
                 if (!newAddress.isEmpty()) {
-                    customer.Address = newAddress;
+                    customer.address = newAddress;
                 }
                 String newPhoneNumber = SafeInput.readNumericString("Phone Number: ");
                 if (!newPhoneNumber.isEmpty()) {
@@ -658,10 +657,6 @@ public static void addVehicle() {
         String model = SafeInput.readNumericString("Model: ");
 
         double dailyPrice = SafeInput.readDouble("Daily Price: ");
-        scanner.nextLine();
-  
-        boolean available = SafeInput.readBoolean("Available (true/false): ");
-        scanner.nextLine();
 
         Vehicle vehicle = null;
 
@@ -672,7 +667,7 @@ public static void addVehicle() {
                 scanner.nextLine();
                 boolean AC = SafeInput.readBoolean("Air Condition (true/false): ");
                 scanner.nextLine();
-                vehicle = new Car(plateNumber, brand, model, dailyPrice, available, fuelType, numOfSeats, AC);
+                vehicle = new Car(plateNumber, brand, model, dailyPrice, fuelType, numOfSeats, AC);
                 break;
             
             case 2:
@@ -680,7 +675,7 @@ public static void addVehicle() {
                 scanner.nextLine();
                 boolean sidecarAvailability = SafeInput.readBoolean("Sidecar Availability (true/false): ");
                 scanner.nextLine();
-                vehicle = new Motorcycle(plateNumber, brand, model, dailyPrice, available, engineCapacity,
+                vehicle = new Motorcycle(plateNumber, brand, model, dailyPrice, engineCapacity,
                         sidecarAvailability);
                 break;
             
@@ -689,7 +684,7 @@ public static void addVehicle() {
                 scanner.nextLine();
                 boolean fridge = SafeInput.readBoolean("Refrigeration Support (true/false): ");
                 scanner.nextLine();
-                vehicle = new Truck(plateNumber, brand, model, dailyPrice, available, load, fridge);
+                vehicle = new Truck(plateNumber, brand, model, dailyPrice, load, fridge);
                 break;
             default:
                 System.out.println("Invalid vehicle type!");
@@ -706,8 +701,8 @@ public static void removeVehicle() {
   
         boolean removed = false;
         for (int i = 0; i < vehicles.size(); i++) {
-            if (vehicles.get(i).PlateNumber.equals(plateNum)) {
-                if (vehicles.get(i).Available == true) {
+            if (vehicles.get(i).plateNumber.equals(plateNum)) {
+                if (vehicles.get(i).available == true) {
                     vehicles.remove(vehicles.get(i));
                     removed = true;
                     System.out.println("Vehicle removed");
@@ -725,8 +720,8 @@ public static void removeVehicle() {
 public static void showTheAvailabeVehicles() {
    boolean found = false;
         for (int i = 0; i < vehicles.size(); i++) {
-            if (vehicles.get(i).Available) {
-                vehicles.get(i).printinfo();
+            if (vehicles.get(i).available) {
+                vehicles.get(i).printInfo();
                 found = true;
                 System.out.println();
             }
@@ -742,8 +737,8 @@ public static void searchForVehicle() { // editttttttt
   
         boolean found = false;
         for (Vehicle vehicle : vehicles) {
-            if (vehicle.PlateNumber.equals(plateNum)) {
-                vehicle.printinfo();
+            if (vehicle.plateNumber.equals(plateNum)) {
+                vehicle.printInfo();
                 found = true;
                 break;
             }
@@ -756,7 +751,7 @@ public static void searchForVehicle() { // editttttttt
 public static void showAllVehicles() {
   if (vehicles.size() != 0) {
             for (int i = 0; i < vehicles.size(); i++) {
-                vehicles.get(i).printinfo();
+                vehicles.get(i).printInfo();
                 System.out.println();
             }
         } else {
@@ -807,17 +802,17 @@ public static void mainMenu() {
 
 public static void main(String[] args) {
 
-   vehicles.add(new Car("007568", "Toyota", "Camry", 50, true, "petrol", 5, true));
-        vehicles.add(new Car("007345", "Tesla", "Model 3", 42, true, "electric", 5, true));
-        vehicles.add(new Motorcycle("006578", "Harley", "Davidson", 35, true, 1200, true));
-        vehicles.add(new Motorcycle("002348", "Kawasaki", "Ninja H2R", 190, true, 998, false));
-        vehicles.add(new Truck("005364", "Volvo", "FH16", 90, true, 8000, true));
+   vehicles.add(new Car("007568", "Toyota", "Camry", 50, "petrol", 5, true));
+        vehicles.add(new Car("007345", "Tesla", "Model 3", 42, "electric", 5, true));
+        vehicles.add(new Motorcycle("006578", "Harley", "Davidson", 35, 1200, true));
+        vehicles.add(new Motorcycle("002348", "Kawasaki", "Ninja H2R", 190, 998, false));
+        vehicles.add(new Truck("005364", "Volvo", "FH16", 90, 8000, true));
 
         customers.add(
-          new Individual("0066", "Yessayie", "Damascus", "0994 592 915", 0, "06001237",
+          new Individual("0066", "Yessayie", "Damascus", "0994 592 915", "06001237",
               LocalDate.of(2007, 7, 13)));
         customers.add(
-          new Company("0024", "Cham City Center", "Damascus", "011 562 8889", 0, 23, "CCDU7782"));
+          new Company("0024", "Cham City Center", "Damascus", "011 562 8889", 23, "CCDU7782"));
 
         mainMenu();
 
