@@ -13,7 +13,7 @@ class Main {
     static double balance = 100000;
 
 // Reports and Statistics
-public static void contractsAndVehiclesMenu() {
+public static void reportsAndStatisticsMenu() {
 
   while(true){
    System.out.println("Enter the ..... ");
@@ -162,7 +162,7 @@ public static void rentedVehicles() {
 
 }
   
-public static void vehiclesWithFine() {
+public static void vehiclesWithFines() {
   int i = 1;
       boolean found = false;
        for (Contract contract : runningContracts) {
@@ -201,7 +201,7 @@ public static boolean contractsAndCustomersMenu() {
       break;
     case 2: 
       customerWhoRentedAspecificCar();
-      break
+      break;
     case 3: 
       return;
     }
@@ -288,9 +288,7 @@ public static void customersManagementMenu() {
 }
 
 public static void addCustomer() {
-    int type;
-        System.out.println
-        type = SafeInput.readIntRange("Enter customer type: 1-Individual \n2-Company",1,2);
+    int type = SafeInput.readIntRange("Enter customer type: 1-Individual \n2-Company",1,2);
         scanner.nextLine();
   
         System.out.println("Fill the following form:");
@@ -298,9 +296,8 @@ public static void addCustomer() {
         String ID = SafeInput.readNumericString("ID: "); // edittttt
   
         String name = SafeInput.readString("Name: ");
-  
-        System.out.print("Address: ");
-        String address = SafeInput.readString("Name: ");
+
+        String address = SafeInput.readString("Address: ");
   
         String phoneNumber = SafeInput.readString("Phone Number: ");
 
@@ -565,7 +562,7 @@ public static boolean choiceMainMenu() {
       contractsManagementMenu();     
       return true;
     case 4: 
-      reportsAndStatistics();
+      reportsAndStatisticsMenu();
       return true;
     case 5: 
       System.out.println("Exit Successful.");
