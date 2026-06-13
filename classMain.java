@@ -427,7 +427,6 @@ public static void contractsAndCustomersMenu() {
 }
   
 public static void contractsOfSpecificCustomerMenu() {
-   scanner.nextLine();
         String name = SafeInput.readString("Enter customer name: ");
         int i = 1;
         boolean found = false;
@@ -454,7 +453,6 @@ public static void contractsOfSpecificCustomerMenu() {
 }
    
 public static void customerWhoRentedAspecificCar() {
-  scanner.nextLine();
         String plateNum = SafeInput.readNumericString("Enter vehicle Plate Number:");
         int i = 1;
         boolean found = false;
@@ -507,7 +505,6 @@ public static void customersManagementMenu() {
 
 public static void addCustomer() {
     int type = SafeInput.readIntRange("Enter customer type: 1-Individual \n2-Company",1,2);
-        scanner.nextLine();
   
         System.out.println("Fill the following form:");
   
@@ -531,7 +528,6 @@ public static void addCustomer() {
             case 2:
                 String commercialRegistrationNumber = SafeInput.readNumericString("Commercial Registration Number: ");
                 double discountPercentage =  SafeInput.readDouble("Discount Percentage: ");
-                scanner.nextLine();
                 customer = new Company(ID, name, address, phoneNumber, discountPercentage,
                         commercialRegistrationNumber);
                 System.out.println();
@@ -546,7 +542,6 @@ public static void addCustomer() {
 
 public static void searchForCustomer() {
         String ID = SafeInput.readString("Enter customer ID: "); //  edittttt
-        scanner.nextLine();
   
         boolean found = false;
         for (Customer customer : customers) {
@@ -574,7 +569,6 @@ public static void showCustomers() {
 
 public static void editCustomer() {
         String ID = SafeInput.readNumericString("Enter Customer ID to update: ");
-        scanner.nextLine();
   
         boolean found = false;
         for (Customer customer : customers) {
@@ -646,7 +640,6 @@ public static void addVehicle() {
   int type;
         System.out.println();
         type = SafeInput.readIntRange("Enter vehicle type: 1-Car \n2-Motorcycle \n3-Truck", 1, 3);
-        scanner.nextLine();
   
         System.out.println("Fill the following form:");
         
@@ -664,26 +657,20 @@ public static void addVehicle() {
             case 1:
                 String fuelType = SafeInput.readString("Fuel Type (petrol/diesel/electric): ");
                 int numOfSeats = SafeInput.readInt("Number of Seats: ");
-                scanner.nextLine();
                 boolean AC = SafeInput.readBoolean("Air Condition (true/false): ");
-                scanner.nextLine();
                 vehicle = new Car(plateNumber, brand, model, dailyPrice, fuelType, numOfSeats, AC);
                 break;
             
             case 2:
                 double engineCapacity = SafeInput.readDouble("Engine Capacity (CC): ");
-                scanner.nextLine();
                 boolean sidecarAvailability = SafeInput.readBoolean("Sidecar Availability (true/false): ");
-                scanner.nextLine();
                 vehicle = new Motorcycle(plateNumber, brand, model, dailyPrice, engineCapacity,
                         sidecarAvailability);
                 break;
             
             case 3:
                 double load = SafeInput.readDouble("Load Capacity (KG): ");
-                scanner.nextLine();
                 boolean fridge = SafeInput.readBoolean("Refrigeration Support (true/false): ");
-                scanner.nextLine();
                 vehicle = new Truck(plateNumber, brand, model, dailyPrice, load, fridge);
                 break;
             default:
@@ -697,7 +684,6 @@ public static void addVehicle() {
 
 public static void removeVehicle() {
         String plateNum = SafeInput.readNumericString("Enter vehicle plate number to remove: ");
-        scanner.nextLine();
   
         boolean removed = false;
         for (int i = 0; i < vehicles.size(); i++) {
@@ -733,7 +719,6 @@ public static void showTheAvailabeVehicles() {
    
 public static void searchForVehicle() { // editttttttt
         String plateNum = SafeInput.readNumericString("Enter plate number: ");
-        scanner.nextLine();
   
         boolean found = false;
         for (Vehicle vehicle : vehicles) {
@@ -760,34 +745,9 @@ public static void showAllVehicles() {
 }
    
 // MAIN MENU
-public static boolean choiceMainMenu() {
-  int choice = SafeInput.readIntRange("Enter the number of the service which you want: ", 1, 5);
- 
-  switch(choice) {
-    case 1: 
-      vehiclesManagementMenu();
-      return true;
-    case 2: 
-      customersManagementMenu();
-      return true;
-    case 3: 
-      contractsManagementMenu();     
-      return true;
-    case 4: 
-      reportsAndStatisticsMenu();
-      return true;
-    case 5: 
-      System.out.println("Exit Successful.");
-      return false;
-    default:
-      return true;
-  }
-}
-
 public static void mainMenu() {
-  boolean running = true;
-  while(running){
-   System.out.println("Welcome to our System\nWhich service do you need?");
+  while(true){
+   System.out.println("\nWhich service do you need?");
    System.out.println(
         "1- Vehicles Management" 
       + "\n2- Customers Management"
@@ -795,7 +755,27 @@ public static void mainMenu() {
       + "\n4- Reports and Statistics"
       + "\n5- Exit the Program"
     );
-   running = choiceMainMenu();
+   
+    int choice = SafeInput.readIntRange("Enter the number of the service which you want: ", 1, 5);
+ 
+  switch(choice) {
+    case 1: 
+      vehiclesManagementMenu();
+      break;
+    case 2: 
+      customersManagementMenu();
+      break;
+    case 3: 
+      contractsManagementMenu();     
+      break;
+    case 4: 
+      reportsAndStatisticsMenu();
+      break;
+    case 5: 
+      System.out.println("Exit Successful.");
+      return;
+  }
+  
    }
 }
 
@@ -814,6 +794,7 @@ public static void main(String[] args) {
         customers.add(
           new Company("0024", "Cham City Center", "Damascus", "011 562 8889", 23, "CCDU7782"));
 
+        System.out.println("Welcome to our System");
         mainMenu();
 
 }
