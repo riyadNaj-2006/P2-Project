@@ -17,7 +17,7 @@ class Motorcycle extends Vehicle {
         return engineCapacity;
     }
 
-    public void setEngineCapacity(float engineCapacity) {
+    public void setEngineCapacity(double engineCapacity) {
         this.engineCapacity = engineCapacity;
     }
 
