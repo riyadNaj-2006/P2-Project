@@ -1,22 +1,20 @@
+package Project_java2;
 public abstract class Customer {
+    static protected int nextIdCustomer=1;
     protected String ID;
-    protected String name;
-    protected String address;
+    protected String Name;
+    protected String Address;
     protected String phoneNumber;
+    protected boolean isRented=false ;
+    private int numberOfContracts;    // for vib Customer
 
-    private int numberOfContracts;
-
-    Customer(String ID, String name, 
-             String address, 
-             String phoneNumber,
-             int numberOfContracts) {
-        this.ID = ID;
-        this.name = name;
-        this.address = address;
+    Customer( String Name, String Address, String phoneNumber) {
+        this.ID = "CUS"+"_"+getType()+ "_"+String.format("%04d", nextIdCustomer++);
+        this.Name = Name;
+        this.Address = Address;
         this.phoneNumber = phoneNumber;
-        this.numberOfContracts = numberOfContracts;
     }
-
+    
     public int getNumberOfContracts() {
         return numberOfContracts;
     }
@@ -28,11 +26,12 @@ public abstract class Customer {
 public void incrementContracts() {
     this.numberOfContracts++;
 }
-    
-    public abstract void printInfo();
+
+    public abstract void printinfo();
 
     public abstract double getDiscountRate();
 
     public abstract String getType();
 
 }
+
