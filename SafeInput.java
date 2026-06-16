@@ -1,7 +1,5 @@
-package mainPackage;
-
 /*
-A brief overview of this class..
+A brief overview of this class: 
 This utility class provides safe and robust user input handling by validating data types and ranges before returning values,
 It completely prevents "InputMismatchException" by pre-checking each input with "hasNextInt()" and similar methods, ensuring the program never crashes due to invalid user entry.
 */ 
