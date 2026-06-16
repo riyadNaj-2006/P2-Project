@@ -16,18 +16,14 @@ public class SafeInput {
     public static int readInt(String prompt) {
 
         while (true) {
-
             System.out.print(prompt);
 
             if (in.hasNextInt()) {
-
                 int value = in.nextInt();
                 in.nextLine(); // Clear input buffer
-
                 return value;
-
-            } else {
-
+            } 
+            else {
                 System.out.println("Error: Please enter a valid integer number.");
                 in.nextLine(); // Clear input buffer
             }
@@ -38,20 +34,15 @@ public class SafeInput {
      Reads a valid double from the user.
     */
     public static double readDouble(String prompt) {
-
         while (true) {
-
             System.out.print(prompt);
 
             if (in.hasNextDouble()) {
-
                 double value = in.nextDouble();
                 in.nextLine(); // Clear input buffer
-
                 return value;
-
-            } else {
-
+            } 
+            else {
                 System.out.println("Error: Please enter a valid decimal number.");
                 in.nextLine(); // Clear input buffer
             }
@@ -64,9 +55,7 @@ public class SafeInput {
      No spaces, digits, or other symbols allowed.
     */
     public static String readString(String prompt) {
-
         while (true) {
-
             System.out.print(prompt);
 
             String input = in.nextLine().trim();
@@ -74,22 +63,19 @@ public class SafeInput {
 
             // 1. Check if the input is empty
             if (input.isEmpty()) {
-
                 System.out.println("Error: Input cannot be empty.");
                 continue;
             }
 
             boolean isValid = true;
-
             // 2. Loop through each character to validate
             for (int i = 0; i < input.length(); i++) {
-
                 char ch = input.charAt(i);
-
-                // If the character is not a letter and not an underscore,
-                // it's invalid
+                /*
+                 If the character is not a letter and not an underscore,
+                 it's invalid
+                */
                 if (!Character.isLetter(ch) && ch != '_') {
-
                     isValid = false;
                     break; // Stop checking immediately if an invalid character is found
                 }
@@ -97,11 +83,9 @@ public class SafeInput {
 
             // 3. Final decision
             if (isValid) {
-
                 return input; // Input is valid, return it
-
-            } else {
-
+            } 
+            else {
                 System.out.println(
                     "Error: Only letters and underscores are allowed \"No spaces or numbers\""
                 );
@@ -118,41 +102,33 @@ public class SafeInput {
      No spaces or other symbols allowed.
     */
     public static String readNumericString(String prompt) {
-
         while (true) {
-
             System.out.print(prompt);
 
             String input = in.nextLine().trim();
 
             // 1. empty check
             if (input.isEmpty()) {
-
                 System.out.println("Error: Input cannot be empty.");
                 continue;
             }
 
             boolean isValid = true;
-
             // 2. validation loop
             for (int i = 0; i < input.length(); i++) {
-
                 char ch = input.charAt(i);
 
-                // allow letters OR digits OR underscore
+                // allow letters or digits or underscore
                 if (!Character.isLetterOrDigit(ch) && ch != '_') {
-
                     isValid = false;
                     break;
                 }
             }
 
             if (isValid) {
-
                 return input;
-
-            } else {
-
+            } 
+             else {
                 System.out.println(
                     "Error: Only letters, numbers, and underscore are allowed \"No spaces or symbols\""
                 );
@@ -166,25 +142,17 @@ public class SafeInput {
     public static boolean readBoolean(String prompt) {
 
         while (true) {
-
             System.out.print(prompt + " (yes/no): ");
 
             String input = in.nextLine().trim().toLowerCase();
 
-            if (input.equals("yes")
-                    || input.equals("y")
-                    || input.equals("true")) {
+            if (input.equals("yes") || input.equals("y") || input.equals("true")) {
 
                 return true;
 
-            } else if (input.equals("no")
-                    || input.equals("n")
-                    || input.equals("false")) {
-
+            } else if (input.equals("no") || input.equals("n") || input.equals("false")) {
                 return false;
-
             } else {
-
                 System.out.println("Error: Please enter (yes) or (no).");
             }
         }
@@ -194,15 +162,11 @@ public class SafeInput {
  Reads a valid integer within a specific range
  Re-prompts the user until a valid value is entered.
 */
-public static int readIntRange(
-        String prompt,
-        int min,
-        int max) {
+public static int readIntRange(String prompt, int min, int max) {
 
     while (true) {
-
         int value = readInt(prompt);
-
+        
         if (value >= min && value <= max) {
             return value;
         }
@@ -220,14 +184,11 @@ public static int readIntRange(
  year, month, and day ranges.
 */
 public static LocalDate readDate(String prompt) {
-
     while (true) {
-
         System.out.println(prompt);
 
         // YEAR
         int currentYear = LocalDate.now().getYear(); 
-
         int year;
 
         while (true) {
@@ -237,30 +198,18 @@ public static LocalDate readDate(String prompt) {
             break; 
            }
 
-      System.out.println(
-        "User must be at least 18 years old."
-    );
+      System.out.println("User must be at least 18 years old.");
    }
 
         // MONTH
-        int month = readIntRange(
-            "Enter month: ",
-            1,
-            12
-        );
+        int month = readIntRange("Enter month: ", 1, 12);
 
         // DAY
-        int day = readIntRange(
-            "Enter day: ",
-            1,
-            31
-        );
+        int day = readIntRange("Enter day: ", 1, 31);
 
         // Validate actual calendar date
         try {
-
             return LocalDate.of(year, month, day);
-
         } catch (DateTimeException e) {
 
             System.out.println(
@@ -269,4 +218,62 @@ public static LocalDate readDate(String prompt) {
         }
     }
 }
+
+        /*
+         Reads a valid LocalDate from the user.
+         Handles invalid birth dates and validates (year ranges)
+        */
+        public static LocalDate readValidBirthDate(String prompt) {
+        LocalDate birth;
+
+        while (true) {
+            birth = readDate(prompt);
+
+            int currentYear = LocalDate.now().getYear();
+            int age = currentYear - birth.getYear();
+
+            if (age >= 18 && age <= 80) {
+                return birth;
+            }
+
+            System.out.println(" Age must be between 18 and 100 years.");
+        }
+    }
+
+    /*
+     Reads a string that allow only numbers
+     No strings, spaces or other symbols allowed.
+    */
+    public static String readStringButOnlyNumbers(String prompt) {
+        while (true) {
+            System.out.print(prompt);
+
+            String input = in.nextLine().trim();
+
+            // 1. empty check
+            if (input.isEmpty()) {
+                System.out.println("Error: Input cannot be empty.");
+                continue;
+            }
+
+            boolean isValid = true;
+            // 2. validation loop
+            for (int i = 0; i < input.length(); i++) {
+                char ch = input.charAt(i);
+
+                // allow letters OR digits OR underscore
+                if (!Character.isDigit(ch)) {
+                    isValid = false;
+                    break;
+                }
+            }
+
+            if (isValid) {
+                return input;
+            } 
+             else {
+                System.out.println("Error: Only numbers are allowed \"No spaces or symbols\"");
+            }
+        }
+    }
 }
