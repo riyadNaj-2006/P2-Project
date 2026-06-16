@@ -1,6 +1,19 @@
+package mainPackage;
+
+/*
+A brief overview of this class..
+This utility class provides safe and robust user input handling by validating data types and ranges before returning values,
+It completely prevents "InputMismatchException" by pre-checking each input with "hasNextInt()" and similar methods, ensuring the program never crashes due to invalid user entry.
+*/ 
+
 import java.util.Scanner;
 import java.time.LocalDate;
 import java.time.DateTimeException;
+/* 
+The package "java.lang" is automatically imported in every Java program 
+without the need to write an import statement.
+Its methods like "String.charAt(i)" and "Character.isLetterOrDigit(ch)" and et..
+*/
 
 public class SafeInput {
 
@@ -64,7 +77,7 @@ public class SafeInput {
             // 1. Check if the input is empty
             if (input.isEmpty()) {
                 System.out.println("Error: Input cannot be empty.");
-                continue;
+                continue; // It immediately transfers the program execution to the beginning of the `while (true)` loop.
             }
 
             boolean isValid = true;
@@ -110,7 +123,7 @@ public class SafeInput {
             // 1. empty check
             if (input.isEmpty()) {
                 System.out.println("Error: Input cannot be empty.");
-                continue;
+                continue; // It immediately transfers the program execution to the beginning of the `while (true)` loop.
             }
 
             boolean isValid = true;
@@ -198,7 +211,7 @@ public static LocalDate readDate(String prompt) {
             break; 
            }
 
-      System.out.println("User must be at least 18 years old.");
+      System.out.println("Error: Enter a valid date.");
    }
 
         // MONTH
@@ -213,7 +226,7 @@ public static LocalDate readDate(String prompt) {
         } catch (DateTimeException e) {
 
             System.out.println(
-                "Error: The entered date does not exist. Please try again."
+                "Error: The entered date does not exist, Please try again."
             );
         }
     }
@@ -236,7 +249,7 @@ public static LocalDate readDate(String prompt) {
                 return birth;
             }
 
-            System.out.println(" Age must be between 18 and 100 years.");
+            System.out.println(" Age must be between 18 and 80 years.");
         }
     }
 
@@ -253,7 +266,7 @@ public static LocalDate readDate(String prompt) {
             // 1. empty check
             if (input.isEmpty()) {
                 System.out.println("Error: Input cannot be empty.");
-                continue;
+                continue; // It immediately transfers the program execution to the beginning of the `while (true)` loop.
             }
 
             boolean isValid = true;
